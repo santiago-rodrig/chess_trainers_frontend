@@ -1,68 +1,47 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Chess Trainers Frontend
 
-## Available Scripts
+This is the frontend of a chess trainers appointments app,
+there are trainers and clients and each client schedules
+an appointment with a chess trainer.
 
-In the project directory, you can run:
+## Requirements
 
-### `yarn start`
+- [node](https://nodejs.org/en/)
+- [yarn](https://yarnpkg.com/getting-started)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Setup
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Clone the repository.
 
-### `yarn test`
+```zsh
+git clone https://github.com/santiago-rodrig/chess_trainers_frontend.git
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Change the current directory to be that of the repository.
 
-### `yarn build`
+```zsh
+cd chess_trainers_frontend
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Install the dependencies.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```zsh
+yarn install --check-files
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Now you are ready to see the app in action! Fire up the local web server
+with `yarn start` and visit [http://localhost:3000](http://localhost:3000).
 
-### `yarn eject`
+## License
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+This is an MIT licensed project, you can read the license [here](./LICENSE).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Contact
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+You can reach out to me through the following URLs.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- [My website](https://santiagorodriguez.dev)
+- [Github](https://github.com/santiago-rodrig)
+- [LinkedIn](https://www.linkedin.com/in/santiago-andres-rodriguez-marquez/)
+- [AngelList](https://angel.co/u/santiago-andres-rodriguez-marquez)
+- [santo1996.29@gmail.com](mailto:santo1996.29@gmail.com)
