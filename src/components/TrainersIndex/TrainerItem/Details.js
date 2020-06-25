@@ -1,15 +1,8 @@
 import React from 'react';
-import styles from './TrainerItem.module.css';
+import styles from './Details.module.css';
 
-const TrainerItem = () => (
+const Details = () => (
   <>
-    <div className={styles.avatarContainer}>
-      {/* TODO */}
-    </div>
-    <h1 className={styles.trainerName}>
-      Trainer Name
-    </h1>
-    <hr className={styles.divisoryLine} />
     <ul className={styles.trainerDetails}>
       <li className={styles.detailsItem}>
         <h2 className={styles.detailsHeading}>Trainer level</h2>
@@ -37,8 +30,7 @@ const TrainerItem = () => (
       incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
       exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     </p>
-    <p className={styles.contactLink}><a href="http://example.com">Contact with trainer</a></p>
   </>
 );
 
-export default TrainerItem;
+export default Details;
