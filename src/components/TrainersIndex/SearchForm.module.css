@@ -5,6 +5,7 @@
   width: 300px;
   height: 40px;
   transition: width 0.5s ease-in;
+  z-index: 2;
 }
 
 .searchFormExpanded {
@@ -40,4 +41,9 @@
   top: 50;
   left: 0;
   padding-left: 40px;
+}
+
+.searchInput:focus {
+  outline: none;
+  box-shadow: 3px 3px 0 0 #0398fc;
 }

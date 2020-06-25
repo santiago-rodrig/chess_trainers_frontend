@@ -1,5 +1,6 @@
 .divisoryLine {
   width: 400px;
+  border-color: #e8e8e8;
 }
 
 .contactButton {
@@ -17,4 +18,11 @@
   font-family: 'Roboto Slab', serif;
   letter-spacing: 1px;
   padding: 20px;
+  border-style: outset;
+}
+
+.contactButton:focus {
+  outline: none;
+  opacity: 1;
+  border-style: inset;
 }

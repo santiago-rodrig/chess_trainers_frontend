@@ -6,7 +6,10 @@
   width: 50px;
   height: 50px;
   font-size: 50px;
+  color: #e8e8e8;
   text-align: center;
+  background-color: transparent;
+  border: none;
 }
 
 .leftArrow {
@@ -15,4 +18,9 @@
 
 .rightArrow {
   right: 20px;
+}
+
+.leftArrow:focus,
+.rightArrow:focus {
+  outline: none;
 }

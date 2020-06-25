@@ -29,3 +29,7 @@ a {
   text-decoration: none;
   color: #0398fc;
 }
+
+img {
+  max-width: 100%;
+}
