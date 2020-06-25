@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&family=Roboto+Slab:wght@300;700&display=swap');
+
+html {
+  box-sizing: border-box;
+}
+
+*::before,
+*,
+*::after {
+  box-sizing: inherit;
+}
+
+ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+body {
+  padding-bottom: 150px;
+  background-color: #fcfcfc;
+  font-family: 'Lora', serif;
+}
+
+h1,
+h2 {
+  font-family: 'Roboto Slab', serif;
+}
+
+a {
+  text-decoration: none;
+  color: #0398fc;
+}
+
+img {
+  max-width: 100%;
+}

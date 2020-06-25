@@ -1,0 +1,25 @@
+.indicatorsContainer {
+  position: fixed;
+  display: flex;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  justify-content: space-evenly;
+  padding-top: 0.75rem;
+  padding-bottom: 1rem;
+  background-color: #333;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.indicator {
+  width: 30px;
+  height: 30px;
+  background-color: #e8e8e8;
+  border-radius: 50%;
+}
+
+.indicatorActive {
+  background-color: #0398fc;
+}
