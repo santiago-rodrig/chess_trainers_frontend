@@ -1,0 +1,46 @@
+.avatarContainer {
+  background-color: khaki;
+  width: 300px;
+  height: 300px;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.trainerName {
+  text-align: center;
+}
+
+.divisoryLine {
+  width: 400px;
+}
+
+.trainerDetails {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.detailsItem {
+  flex-basis: 33.33%;
+}
+
+.detailsHeading,
+.detailsContent {
+  text-align: center;
+}
+
+.trainerDescription {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+}
+
+.contactLink {
+  margin-top: 40px;
+  text-align: center;
+}
