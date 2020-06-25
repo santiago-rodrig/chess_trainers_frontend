@@ -1,0 +1,18 @@
+.leftArrow,
+.rightArrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  font-size: 50px;
+  text-align: center;
+}
+
+.leftArrow {
+  left: 20px;
+}
+
+.rightArrow {
+  right: 20px;
+}
