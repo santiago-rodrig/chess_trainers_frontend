@@ -22,12 +22,12 @@ const TrainersIndex = () => (
         />
       </label>
     </form>
-    <ul id="sliderIndicators">
-      <li className="circle circleActive" />
-      <li className="circle" />
-      <li className="circle" />
-    </ul>
-    <main>
+    <div className={styles.indicatorsContainer}>
+      <div className={`${styles.indicator} ${styles.indicatorActive}`} />
+      <div className={styles.indicator} />
+      <div className={styles.indicator} />
+    </div>
+    <main style={{ maxWidth: '86%', marginLeft: 'auto', marginRight: 'auto' }}>
       <TrainerItem />
     </main>
   </div>
