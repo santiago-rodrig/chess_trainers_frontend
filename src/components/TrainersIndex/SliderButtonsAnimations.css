@@ -9,5 +9,5 @@
 }
 
 .sliderAnimated {
-  animation: opacityAnimation 1s ease;
+  animation: opacityAnimation 0.5s ease;
 }
