@@ -5,7 +5,7 @@ import styles from './Avatar.module.css';
 const Avatar = ({ trainer }) => (
   <>
     <div className={styles.avatarContainer}>
-      <img src="https://www.gravatar.com/avatar/f4b9954393f4205445d3d4f636add64f?s=300" alt="trainer avatar" />
+      <img src={`https://www.gravatar.com/avatar/${trainer.hashed_email}?s=300`} alt="trainer avatar" />
     </div>
     <h1 className={styles.trainerName}>
       {trainer.name}
@@ -20,6 +20,8 @@ Avatar.propTypes = {
     events_won: PropTypes.number,
     calendar_url: PropTypes.string,
     location_url: PropTypes.string,
+    description: PropTypes.string,
+    hashed_email: PropTypes.string,
   }).isRequired,
 };
 

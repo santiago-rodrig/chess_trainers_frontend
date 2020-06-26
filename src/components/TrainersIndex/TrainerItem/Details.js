@@ -26,7 +26,7 @@ const Details = ({ trainer }) => (
         </p>
       </li>
     </ul>
-    <p className={styles.trainerDescription}>DESCRIPTION HERE</p>
+    <p className={styles.trainerDescription}>{trainer.description}</p>
   </>
 );
 
@@ -37,6 +37,8 @@ Details.propTypes = {
     events_won: PropTypes.number,
     calendar_url: PropTypes.string,
     location_url: PropTypes.string,
+    description: PropTypes.string,
+    hashed_email: PropTypes.string,
   }).isRequired,
 };
 
