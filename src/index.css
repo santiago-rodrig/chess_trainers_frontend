@@ -34,3 +34,13 @@ a {
 img {
   max-width: 100%;
 }
+
+/* alertifyjs */
+
+.ajs-warning {
+  background-color: #fffc52 !important;
+  font-family: 'Robot Slab', serif !important;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 1px;
+}

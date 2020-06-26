@@ -6,6 +6,7 @@ import SearchForm from '../components/TrainersIndex/SearchForm';
 import Indicators from '../components/TrainersIndex/Indicators';
 import SliderButtons from '../components/TrainersIndex/SliderButtons';
 import { updateGroup, updateTrainers, toggleIsLastGroup } from '../actions';
+import CurrentPage from '../components/TrainersIndex/CurrentPage';
 
 const APIURL = 'http://localhost:4000/trainers/group/';
 const GETOptions = {
@@ -69,6 +70,7 @@ const TrainersIndex = ({
     renderedJSX = (
       <>
         <SearchForm />
+        <CurrentPage page={group + 1} />
         <Indicators />
         <SliderButtons
           startFetching={startFetching}

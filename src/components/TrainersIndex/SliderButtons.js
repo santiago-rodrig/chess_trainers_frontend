@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import alertify from 'alertifyjs/build/alertify';
+import 'alertifyjs/build/css/alertify.css';
 import styles from './SliderButtons.module.css';
 import './SliderButtonsAnimations.css';
 import indicatorStyles from './Indicators.module.css';
@@ -30,12 +32,16 @@ const SliderButtons = ({
 
     switch (direction) {
       case 'left':
-        if (activeIndicatorIndex === 0 && group > 0) {
-          if (isLastGroup) toggleIsLastGroup();
-          clearActiveIndicator();
-          indicators[0].classList.add(indicatorStyles.indicatorActive);
-          updateGroup(group - 1);
-          startFetching();
+        if (activeIndicatorIndex === 0) {
+          if (group > 0) {
+            if (isLastGroup) toggleIsLastGroup();
+            clearActiveIndicator();
+            indicators[0].classList.add(indicatorStyles.indicatorActive);
+            updateGroup(group - 1);
+            startFetching();
+          } else {
+            alertify.warning('This is the first trainer');
+          }
         } else if (activeIndicatorIndex > 0) {
           clearActiveIndicator();
           indicators[activeIndicatorIndex - 1].classList.add(indicatorStyles.indicatorActive);
@@ -43,15 +49,23 @@ const SliderButtons = ({
         }
         break;
       default:
-        if (activeIndicatorIndex === 2 && !isLastGroup) {
-          clearActiveIndicator();
-          indicators[0].classList.add(indicatorStyles.indicatorActive);
-          updateGroup(group + 1);
-          startFetching();
-        } else if (activeIndicatorIndex < 2 && trainersCount > (activeIndicatorIndex + 1)) {
-          clearActiveIndicator();
-          indicators[activeIndicatorIndex + 1].classList.add(indicatorStyles.indicatorActive);
-          setCurrentTrainer(activeIndicatorIndex + 1);
+        if (activeIndicatorIndex === 2) {
+          if (!isLastGroup) {
+            clearActiveIndicator();
+            indicators[0].classList.add(indicatorStyles.indicatorActive);
+            updateGroup(group + 1);
+            startFetching();
+          } else {
+            alertify.warning('No more trainers');
+          }
+        } else if (activeIndicatorIndex < 2) {
+          if (trainersCount > (activeIndicatorIndex + 1)) {
+            clearActiveIndicator();
+            indicators[activeIndicatorIndex + 1].classList.add(indicatorStyles.indicatorActive);
+            setCurrentTrainer(activeIndicatorIndex + 1);
+          } else {
+            alertify.warning('No more trainers');
+          }
         }
         break;
     }
