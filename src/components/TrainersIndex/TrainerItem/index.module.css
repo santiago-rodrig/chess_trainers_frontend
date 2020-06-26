@@ -26,3 +26,7 @@
   opacity: 1;
   border-style: inset;
 }
+
+.trainerItem-appear {
+  opacity: 0;
+}

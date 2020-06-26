@@ -73,9 +73,17 @@ const SliderButtons = ({
 
   const handleClick = (element, direction) => {
     if (element.classList.contains('sliderAnimated')) return;
+    window.scrollTo(0, 0);
     changeIndicator(direction);
     element.classList.add('sliderAnimated');
     window.setTimeout(element => element.classList.remove('sliderAnimated'), 500, element);
+    const item = window.document.getElementsByClassName('trainerItem')[0];
+    item.classList.toggle('trainerItem');
+    item.classList.toggle('fadingItem');
+    window.setTimeout(() => {
+      item.classList.toggle('trainerItem');
+      item.classList.toggle('fadingItem');
+    }, 250);
   };
 
   return (

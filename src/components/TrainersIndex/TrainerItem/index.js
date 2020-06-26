@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './index.module.css';
+import './TrainerItemTransitions.css';
 import Avatar from './Avatar';
 import Details from './Details';
 
 const TrainerItem = ({ trainer }) => (
-  <>
+  <div className="trainerItem">
     <Avatar trainer={trainer} />
     <hr className={styles.divisoryLine} />
     <Details trainer={trainer} />
     <button className={styles.contactButton} type="button">make appointment</button>
-  </>
+  </div>
 );
 
 TrainerItem.propTypes = {
