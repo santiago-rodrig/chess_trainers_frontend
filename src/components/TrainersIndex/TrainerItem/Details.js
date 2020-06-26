@@ -1,36 +1,43 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './Details.module.css';
 
-const Details = () => (
+const Details = ({ trainer }) => (
   <>
     <ul className={styles.trainerDetails}>
       <li className={styles.detailsItem}>
         <h2 className={styles.detailsHeading}>Trainer level</h2>
-        <p className={styles.detailsContent}>expert</p>
+        <p className={styles.detailsContent}>{trainer.expertise}</p>
       </li>
       <li className={styles.detailsItem}>
         <h2 className={styles.detailsHeading}>Events won</h2>
-        <p className={styles.detailsContent}>3</p>
+        <p className={styles.detailsContent}>{trainer.events_won}</p>
       </li>
       <li className={styles.detailsItem}>
         <h2 className={styles.detailsHeading}>Training location</h2>
         <p className={styles.detailsContent}>
-          <a href="https://google.com">google maps link</a>
+          <a href={trainer.location_url}>google maps link</a>
         </p>
       </li>
       <li className={styles.detailsItem}>
         <h2 className={styles.detailsHeading}>Schedule</h2>
         <p className={styles.detailsContent}>
-          <a href="https://google.com">google calendar link</a>
+          <a href={trainer.calendar_url}>google calendar link</a>
         </p>
       </li>
     </ul>
-    <p className={styles.trainerDescription}>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-      exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    </p>
+    <p className={styles.trainerDescription}>DESCRIPTION HERE</p>
   </>
 );
+
+Details.propTypes = {
+  trainer: PropTypes.exact({
+    name: PropTypes.string,
+    expertise: PropTypes.string,
+    events_won: PropTypes.number,
+    calendar_url: PropTypes.string,
+    location_url: PropTypes.string,
+  }).isRequired,
+};
 
 export default Details;

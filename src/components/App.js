@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import TrainersIndex from './TrainersIndex';
+import TrainersIndex from '../containers/TrainersIndex';
 import Navbar from './Navbar';
 
 function App() {

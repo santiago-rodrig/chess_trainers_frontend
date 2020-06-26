@@ -1,9 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './SliderButtons.module.css';
 import './SliderButtonsAnimations.css';
 import indicatorStyles from './Indicators.module.css';
 
-const SliderButtons = () => {
+const SliderButtons = ({
+  startFetching,
+  updateGroup,
+  setCurrentTrainer,
+  group,
+  isLastGroup,
+  trainersCount,
+}) => {
   const changeIndicator = direction => {
     const indicators = window.document.getElementsByClassName(indicatorStyles.indicator);
     let activeIndicatorIndex = null;
@@ -16,10 +24,24 @@ const SliderButtons = () => {
     }
     switch (direction) {
       case 'left':
-        indicators[(activeIndicatorIndex + 2) % 3].classList.add(indicatorStyles.indicatorActive);
+        if (activeIndicatorIndex === 0 && group > 0) {
+          indicators[0].classList.add(indicatorStyles.indicatorActive);
+          updateGroup(group - 1);
+          startFetching();
+        } else if (activeIndicatorIndex > 0) {
+          indicators[activeIndicatorIndex - 1].classList.add(indicatorStyles.indicatorActive);
+          setCurrentTrainer(activeIndicatorIndex - 1);
+        }
         break;
       default:
-        indicators[(activeIndicatorIndex + 1) % 3].classList.add(indicatorStyles.indicatorActive);
+        if (activeIndicatorIndex === 2 && !isLastGroup) {
+          indicators[0].classList.add(indicatorStyles.indicatorActive);
+          updateGroup(group + 1);
+          startFetching();
+        } else if (activeIndicatorIndex < 2 && trainersCount > (activeIndicatorIndex + 1)) {
+          indicators[activeIndicatorIndex + 1].classList.add(indicatorStyles.indicatorActive);
+          setCurrentTrainer(activeIndicatorIndex + 1);
+        }
         break;
     }
   };
@@ -49,6 +71,15 @@ const SliderButtons = () => {
       </button>
     </>
   );
+};
+
+SliderButtons.propTypes = {
+  startFetching: PropTypes.func.isRequired,
+  updateGroup: PropTypes.func.isRequired,
+  setCurrentTrainer: PropTypes.func.isRequired,
+  group: PropTypes.number.isRequired,
+  isLastGroup: PropTypes.bool.isRequired,
+  trainersCount: PropTypes.number.isRequired,
 };
 
 export default SliderButtons;
