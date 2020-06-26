@@ -11,34 +11,45 @@ const SliderButtons = ({
   group,
   isLastGroup,
   trainersCount,
+  toggleIsLastGroup,
 }) => {
   const changeIndicator = direction => {
     const indicators = window.document.getElementsByClassName(indicatorStyles.indicator);
     let activeIndicatorIndex = null;
+
     for (let i = 0; i < indicators.length; i += 1) {
       if (indicators[i].classList.contains(indicatorStyles.indicatorActive)) {
         activeIndicatorIndex = i;
-        indicators[i].classList.remove(indicatorStyles.indicatorActive);
         break;
       }
     }
+
+    const clearActiveIndicator = () => {
+      indicators[activeIndicatorIndex].classList.remove(indicatorStyles.indicatorActive);
+    };
+
     switch (direction) {
       case 'left':
         if (activeIndicatorIndex === 0 && group > 0) {
+          if (isLastGroup) toggleIsLastGroup();
+          clearActiveIndicator();
           indicators[0].classList.add(indicatorStyles.indicatorActive);
           updateGroup(group - 1);
           startFetching();
         } else if (activeIndicatorIndex > 0) {
+          clearActiveIndicator();
           indicators[activeIndicatorIndex - 1].classList.add(indicatorStyles.indicatorActive);
           setCurrentTrainer(activeIndicatorIndex - 1);
         }
         break;
       default:
         if (activeIndicatorIndex === 2 && !isLastGroup) {
+          clearActiveIndicator();
           indicators[0].classList.add(indicatorStyles.indicatorActive);
           updateGroup(group + 1);
           startFetching();
         } else if (activeIndicatorIndex < 2 && trainersCount > (activeIndicatorIndex + 1)) {
+          clearActiveIndicator();
           indicators[activeIndicatorIndex + 1].classList.add(indicatorStyles.indicatorActive);
           setCurrentTrainer(activeIndicatorIndex + 1);
         }
@@ -80,6 +91,7 @@ SliderButtons.propTypes = {
   group: PropTypes.number.isRequired,
   isLastGroup: PropTypes.bool.isRequired,
   trainersCount: PropTypes.number.isRequired,
+  toggleIsLastGroup: PropTypes.func.isRequired,
 };
 
 export default SliderButtons;

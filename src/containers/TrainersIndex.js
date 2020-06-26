@@ -77,6 +77,7 @@ const TrainersIndex = ({
           group={group}
           isLastGroup={isLastGroup}
           trainersCount={trainers.length}
+          toggleIsLastGroup={toggleIsLastGroup}
         />
         <main style={{ maxWidth: '86%', marginLeft: 'auto', marginRight: 'auto' }}>
           <TrainerItem trainer={trainers[currentTrainer]} />
