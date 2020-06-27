@@ -36,6 +36,11 @@ img {
   max-width: 100%;
 }
 
+strong {
+  font-weight: 700;
+  font-family: 'Roboto Slab', serif;
+}
+
 /* alertifyjs */
 
 .ajs-warning {

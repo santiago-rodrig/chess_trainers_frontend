@@ -57,7 +57,7 @@ const Sidebar = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <i className="fab fa-facebook-f"></i>
+                <i className="fab fa-facebook-f" />
               </a>
             </li>
             <li className={styles.socialMediaItem}>
@@ -66,7 +66,7 @@ const Sidebar = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <i className="fab fa-pinterest-p"></i>
+                <i className="fab fa-pinterest-p" />
               </a>
             </li>
           </ul>
