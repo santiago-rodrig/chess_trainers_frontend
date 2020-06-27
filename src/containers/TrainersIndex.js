@@ -7,6 +7,7 @@ import Indicators from '../components/TrainersIndex/Indicators';
 import SliderButtons from '../components/TrainersIndex/SliderButtons';
 import { updateGroup, updateTrainers, toggleIsLastGroup } from '../actions';
 import CurrentPage from '../components/TrainersIndex/CurrentPage';
+import Loading from '../components/Loading';
 
 const APIURL = 'http://localhost:4000/trainers/group/';
 const GETOptions = {
@@ -48,7 +49,7 @@ const TrainersIndex = ({
         updateTrainers(data.trainers);
         if (data.last_group) toggleIsLastGroup();
         setCurrentTrainer(0);
-        setFetching(false);
+        window.setTimeout(() => setFetching(false), 500, setFetching);
       });
   }, [updateTrainers, setFetching, setCurrentTrainer, group, toggleIsLastGroup]);
 
@@ -65,7 +66,7 @@ const TrainersIndex = ({
   let renderedJSX = null;
 
   if (fetching) {
-    renderedJSX = <h1>RENDERING</h1>;
+    renderedJSX = <Loading />;
   } else {
     renderedJSX = (
       <>
