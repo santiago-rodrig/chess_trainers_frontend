@@ -1,24 +1,10 @@
 import React, { useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styles from './Sidebar.module.css';
 import './Sidebar.css';
 
 const Sidebar = () => {
   const sidebarRef = useRef();
-
-  const handleItemClick = e => {
-    const items = window.document.getElementsByClassName('navItem');
-
-    for (let i = 0; i < items.length; i += 1) {
-      if (items[i].classList.contains('navItem-active')) {
-        items[i].classList.remove('navItem-active');
-        break;
-      }
-    }
-
-    e.target.parentNode.classList.add('navItem-active');
-  };
-
   const handleDimmerClick = e => {
     e.target.classList.remove(styles.dimmerActive);
     e.target.classList.add(styles.dimmerHidden);
@@ -41,16 +27,16 @@ const Sidebar = () => {
         </h1>
         <nav className={styles.navBox}>
           <ul className={styles.navList}>
-            <li className="navItem navItem-active">
-              <Link to="/" onClick={handleItemClick}>trainers</Link>
+            <li className={`navItem ${useLocation().pathname === '/' ? 'navItem-active' : ''}`}>
+              <Link to="/">trainers</Link>
             </li>
-            <li className="navItem">
-              <Link to="/appointments" onClick={handleItemClick}>
+            <li className={`navItem ${useLocation().pathname === '/appointments' ? 'navItem-active' : ''}`}>
+              <Link to="/appointments">
                 appointments
               </Link>
             </li>
-            <li className="navItem">
-              <Link to="/" onClick={handleItemClick}>account</Link>
+            <li className={`navItem ${useLocation().pathname === '/account' ? 'navItem-active' : ''}`}>
+              <Link to="/account">account</Link>
             </li>
           </ul>
         </nav>

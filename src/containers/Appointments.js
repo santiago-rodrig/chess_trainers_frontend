@@ -1,7 +1,8 @@
 import React from 'react';
+import AppointmentsList from '../components/AppointmentsList';
 
 const Appointments = () => (
-  <h1>Appointments component</h1>
+  <AppointmentsList />
 );
 
 export default Appointments;
