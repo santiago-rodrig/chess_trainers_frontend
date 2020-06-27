@@ -9,6 +9,7 @@ import {
   toggleAppointmentsLastGroup,
 } from '../actions';
 import Loading from '../components/Loading';
+import SliderButtons from '../components/Appointments/SliderButtons';
 
 const APIURL = 'http://localhost:4000/appointments/group/';
 
@@ -48,7 +49,7 @@ const Appointments = ({
       .then(data => {
         if (data.last_group) toggleAppointmentsLastGroup();
         updateAppointments(data.appointments);
-        setFetching(false);
+        window.setTimeout(() => setFetching(false), 300, setFetching);
       });
   }, [group, toggleAppointmentsLastGroup, updateAppointments]);
 
@@ -60,11 +61,20 @@ const Appointments = ({
 
   let renderedJSX = null;
 
+  const startFetching = () => setFetching(true);
+
   if (fetching) {
     renderedJSX = <Loading />;
   } else {
     renderedJSX = (
       <>
+        <SliderButtons
+          startFetching={startFetching}
+          group={group}
+          updateGroup={updateAppointmentsGroup}
+          isLastGroup={isLastGroup}
+          toggleIsLastGroup={toggleAppointmentsLastGroup}
+        />
         <AppointmentsList appointments={appointments} />
         <CurrentPage page={group + 1} />
       </>

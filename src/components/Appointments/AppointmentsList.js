@@ -9,7 +9,7 @@ const AppointmentsList = ({ appointments }) => (
     <ul>
       {appointments.map(a => (
         <AppointmentItem
-          key={a.trainer}
+          key={a.created_at}
           appointment={a}
           className={styles.appointment}
         />
