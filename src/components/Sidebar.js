@@ -45,7 +45,9 @@ const Sidebar = () => {
               <Link to="/" onClick={handleItemClick}>trainers</Link>
             </li>
             <li className="navItem">
-              <Link to="/" onClick={handleItemClick}>appointments</Link>
+              <Link to="/appointments" onClick={handleItemClick}>
+                appointments
+              </Link>
             </li>
             <li className="navItem">
               <Link to="/" onClick={handleItemClick}>account</Link>

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import TrainersIndex from '../containers/TrainersIndex';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
+import Appointments from '../containers/Appointments';
 
 function App() {
   return (
@@ -13,6 +14,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <TrainersIndex />
+          </Route>
+          <Route path="/appointments">
+            <Appointments />
           </Route>
         </Switch>
       </Router>

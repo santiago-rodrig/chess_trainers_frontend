@@ -16,6 +16,7 @@ ul {
 }
 
 body {
+  padding-top: 150px;
   padding-bottom: 150px;
   background-color: #fcfcfc;
   font-family: 'Lora', serif;
