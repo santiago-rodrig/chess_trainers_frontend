@@ -20,14 +20,22 @@ const Sidebar = () => {
   };
 
   const handleDimmerClick = e => {
+    e.target.classList.remove(styles.dimmerActive);
+    e.target.classList.add(styles.dimmerHidden);
+    sidebarRef.current.classList.remove(styles.sidebarActive);
     sidebarRef.current.classList.add(styles.sidebarHidden);
-    e.target.style.display = 'none';
   };
 
   return (
     <>
-      <div className={styles.dimmer} onClick={handleDimmerClick} />
-      <aside className={styles.sidebar} ref={sidebarRef}>
+      <div
+        className={`${styles.dimmerHidden} ${styles.dimmer}`}
+        onClick={handleDimmerClick}
+      />
+      <aside
+        className={`${styles.sidebarHidden} ${styles.sidebar}`}
+        ref={sidebarRef}
+      >
         <h1 className={styles.logo}>
           chess trainers
         </h1>
