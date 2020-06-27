@@ -6,7 +6,7 @@ import SearchForm from '../components/TrainersIndex/SearchForm';
 import Indicators from '../components/TrainersIndex/Indicators';
 import SliderButtons from '../components/TrainersIndex/SliderButtons';
 import { updateGroup, updateTrainers, toggleIsLastGroup } from '../actions';
-import CurrentPage from '../components/TrainersIndex/CurrentPage';
+import CurrentPage from '../components/CurrentPage';
 import Loading from '../components/Loading';
 
 const APIURL = 'http://localhost:4000/trainers/group/';
