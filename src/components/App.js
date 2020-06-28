@@ -4,18 +4,24 @@ import TrainersIndex from '../containers/TrainersIndex';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import Appointments from '../containers/Appointments';
+import Login from './Login';
 
 function App() {
   return (
     <>
       <Router>
-        <Navbar />
-        <Sidebar />
         <Switch>
           <Route exact path="/">
+            <Login />
+          </Route>
+          <Route exact path="/trainers">
+            <Navbar />
+            <Sidebar />
             <TrainersIndex />
           </Route>
           <Route exact path="/appointments">
+            <Navbar />
+            <Sidebar />
             <Appointments />
           </Route>
         </Switch>
