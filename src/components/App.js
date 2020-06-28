@@ -24,7 +24,7 @@ const POSTOptions = body => ({
 });
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   const [check, setCheck] = useState(true);
 
   useEffect(() => {
@@ -54,7 +54,11 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/">
-            {loggedIn ? <Redirect to="/appointments" /> : <Login setLoggedIn={setLoggedIn} />}
+            {
+              loggedIn
+                ? <Redirect to="/appointments" />
+                : <Login setLoggedIn={setLoggedIn} />
+            }
           </Route>
           <Route exact path="/trainers">
             {
