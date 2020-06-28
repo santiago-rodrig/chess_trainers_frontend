@@ -5,19 +5,33 @@ import './Sidebar.css';
 
 const Sidebar = () => {
   const sidebarRef = useRef();
-  const handleDimmerClick = e => {
-    e.target.classList.remove(styles.dimmerActive);
-    e.target.classList.add(styles.dimmerHidden);
+  const dimmerRef = useRef();
+
+  const handleDimmerClick = () => {
+    dimmerRef.current.classList.remove(styles.dimmerActive);
+    dimmerRef.current.classList.add(styles.dimmerHidden);
     sidebarRef.current.classList.remove(styles.sidebarActive);
     sidebarRef.current.classList.add(styles.sidebarHidden);
   };
 
   return (
     <>
-      <div
-        className={`${styles.dimmerHidden} ${styles.dimmer}`}
-        onClick={handleDimmerClick}
-      />
+      <form onSubmit={e => e.preventDefault()}>
+        <label htmlFor="dimmer">
+          <span style={{ visibility: 'hidden' }}>Dimmer</span>
+          <input
+            ref={dimmerRef}
+            type="button"
+            name="dimmer"
+            tabIndex="0"
+            onKeyDown={e => {
+              if (e.keyCode === 27) handleDimmerClick();
+            }}
+            className={`${styles.dimmerHidden} ${styles.dimmer}`}
+            onClick={handleDimmerClick}
+          />
+        </label>
+      </form>
       <aside
         className={`${styles.sidebarHidden} ${styles.sidebar}`}
         ref={sidebarRef}
@@ -27,16 +41,16 @@ const Sidebar = () => {
         </h1>
         <nav className={styles.navBox}>
           <ul className={styles.navList}>
-            <li className={`navItem ${useLocation().pathname === '/' ? 'navItem-active' : ''}`}>
-              <Link to="/">trainers</Link>
+            <li className={`navItem ${useLocation().pathname === '/trainers' ? 'navItem-active' : ''}`}>
+              <Link onClick={handleDimmerClick} to="/trainers">trainers</Link>
             </li>
             <li className={`navItem ${useLocation().pathname === '/appointments' ? 'navItem-active' : ''}`}>
-              <Link to="/appointments">
+              <Link onClick={handleDimmerClick} to="/appointments">
                 appointments
               </Link>
             </li>
             <li className={`navItem ${useLocation().pathname === '/account' ? 'navItem-active' : ''}`}>
-              <Link to="/account">account</Link>
+              <Link onClick={handleDimmerClick} to="/account">account</Link>
             </li>
           </ul>
         </nav>
@@ -80,4 +94,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-

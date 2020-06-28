@@ -50,3 +50,21 @@ strong {
   font-size: 20px;
   letter-spacing: 1px;
 }
+
+.ajs-error {
+  background-color: #ff2617 !important;
+  font-family: 'Robot Slab', serif !important;
+  font-weight: 700;
+  font-size: 20px;
+  color: #fcfcfc;
+  letter-spacing: 1px;
+}
+
+.ajs-success {
+  background-color: #37f50c !important;
+  font-family: 'Robot Slab', serif !important;
+  font-weight: 700;
+  font-size: 20px;
+  color: #333;
+  letter-spacing: 1px;
+}
