@@ -43,6 +43,10 @@ const Appointments = ({
 }) => {
   const [fetching, setFetching] = useState(true);
 
+  useEffect(() => {
+    updateAppointmentsGroup(0);
+  }, [updateAppointmentsGroup]);
+
   const fetchAppointments = useCallback(() => {
     window.fetch(`${APIURL}${group}`, GETOptions)
       .then(response => response.json())

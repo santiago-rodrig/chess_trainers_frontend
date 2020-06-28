@@ -41,7 +41,7 @@ const TrainerItem = ({ trainer }) => {
           alertify.error(err.message);
         });
     }
-  }, [sending, setSending]);
+  }, [sending, setSending, trainer.name]);
 
   return (
     <div className="trainerItem">
