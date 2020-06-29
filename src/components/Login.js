@@ -66,7 +66,7 @@ const Login = ({ setLoggedIn }) => {
           Password
           <input ref={passwordRef} type="password" name="password" />
         </label>
-        <button type="submit">{sending ? <img width="20" src={loadingGif} alt="loading" /> : 'login'}</button>
+        <button type="submit">{sending ? <img width="25" src={loadingGif} alt="loading" /> : 'login'}</button>
       </form>
       <Link to="/signup" className={styles.signupLink}>
         Create a new account

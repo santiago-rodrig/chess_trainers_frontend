@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './Navbar.module.css';
 import sidebarStyles from './Sidebar.module.css';
+import Logout from './Logout';
 
-const Navbar = () => {
+const Navbar = ({ setLoggedIn }) => {
   const handleClick = () => {
     const sidebar = window
       .document.getElementsByClassName(sidebarStyles.sidebar)[0];
@@ -23,8 +25,13 @@ const Navbar = () => {
       >
         <i className="fas fa-bars" />
       </button>
+      <Logout setLoggedIn={setLoggedIn} />
     </nav>
   );
+};
+
+Navbar.propTypes = {
+  setLoggedIn: PropTypes.func.isRequired,
 };
 
 export default Navbar;

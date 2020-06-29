@@ -1,0 +1,22 @@
+.logout {
+  font-family: 'Roboto Slab';
+  font-weight: 700;
+  font-size: 22px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fcfcfc;
+  letter-spacing: 1px;
+  padding: 10px;
+  background-color: #ff2617;
+  border: outset;
+  margin-left: 25px;
+  width: 140px;
+}
+
+.logout:active {
+  border: inset;
+}
+
+.logout:focus {
+  outline: none;
+}

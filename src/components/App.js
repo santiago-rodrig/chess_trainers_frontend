@@ -76,7 +76,7 @@ function App() {
               loggedIn && !checking
                 ? (
                   <>
-                    <Navbar />
+                    <Navbar setLoggedIn={setLoggedIn} />
                     <Sidebar />
                     <TrainersIndex />
                   </>
@@ -89,7 +89,7 @@ function App() {
               loggedIn && !checking
                 ? (
                   <>
-                    <Navbar />
+                    <Navbar setLoggedIn={setLoggedIn} />
                     <Sidebar />
                     <Appointments />
                   </>
