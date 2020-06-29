@@ -13,7 +13,7 @@ const SliderButtons = ({
   group,
   isLastGroup,
   trainersCount,
-  toggleIsLastGroup,
+  setIsLastGroup,
 }) => {
   const changeIndicator = direction => {
     const indicators = window.document.getElementsByClassName(indicatorStyles.indicator);
@@ -34,7 +34,7 @@ const SliderButtons = ({
       case 'left':
         if (activeIndicatorIndex === 0) {
           if (group > 0) {
-            if (isLastGroup) toggleIsLastGroup();
+            if (isLastGroup) setIsLastGroup(false);
             clearActiveIndicator();
             indicators[0].classList.add(indicatorStyles.indicatorActive);
             updateGroup(group - 1);
@@ -113,7 +113,7 @@ SliderButtons.propTypes = {
   group: PropTypes.number.isRequired,
   isLastGroup: PropTypes.bool.isRequired,
   trainersCount: PropTypes.number.isRequired,
-  toggleIsLastGroup: PropTypes.func.isRequired,
+  setIsLastGroup: PropTypes.func.isRequired,
 };
 
 export default SliderButtons;

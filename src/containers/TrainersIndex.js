@@ -5,7 +5,7 @@ import TrainerItem from '../components/TrainersIndex/TrainerItem';
 import SearchForm from '../components/TrainersIndex/SearchForm';
 import Indicators from '../components/TrainersIndex/Indicators';
 import SliderButtons from '../components/TrainersIndex/SliderButtons';
-import { updateGroup, updateTrainers, toggleIsLastGroup } from '../actions';
+import { updateGroup, updateTrainers, setIsLastGroup } from '../actions';
 import CurrentPage from '../components/CurrentPage';
 import Loading from '../components/Loading';
 
@@ -22,7 +22,7 @@ const GETOptions = {
 const mapDispatchToProps = dispatch => ({
   updateGroup: group => dispatch(updateGroup(group)),
   updateTrainers: trainers => dispatch(updateTrainers(trainers)),
-  toggleIsLastGroup: () => dispatch(toggleIsLastGroup()),
+  setIsLastGroup: value => dispatch(setIsLastGroup(value)),
 });
 
 const mapStateToProps = state => ({
@@ -37,7 +37,7 @@ const TrainersIndex = ({
   updateGroup,
   updateTrainers,
   isLastGroup,
-  toggleIsLastGroup,
+  setIsLastGroup,
 }) => {
   const [fetching, setFetching] = useState(true);
   const [currentTrainer, setCurrentTrainer] = useState(-1);
@@ -47,17 +47,23 @@ const TrainersIndex = ({
       .then(response => response.json())
       .then(data => {
         updateTrainers(data.trainers);
-        if (data.last_group) toggleIsLastGroup();
+        if (data.last_group) setIsLastGroup(true);
         setCurrentTrainer(0);
         window.setTimeout(() => setFetching(false), 500, setFetching);
       });
-  }, [updateTrainers, setFetching, setCurrentTrainer, group, toggleIsLastGroup]);
+  }, [updateTrainers, setFetching, setCurrentTrainer, group, setIsLastGroup]);
 
   useEffect(() => {
     if (fetching) {
       fetchTrainers();
     }
   }, [fetching, fetchTrainers]);
+
+  useEffect(() => {
+    updateGroup(0);
+    setFetching(true);
+    setIsLastGroup(false);
+  }, [setFetching, updateGroup, setIsLastGroup]);
 
   const startFetching = () => {
     setFetching(true);
@@ -80,7 +86,7 @@ const TrainersIndex = ({
           group={group}
           isLastGroup={isLastGroup}
           trainersCount={trainers.length}
-          toggleIsLastGroup={toggleIsLastGroup}
+          setIsLastGroup={setIsLastGroup}
         />
         <main style={{ maxWidth: '86%', marginLeft: 'auto', marginRight: 'auto' }}>
           <TrainerItem trainer={trainers[currentTrainer]} />
@@ -102,7 +108,7 @@ TrainersIndex.propTypes = {
   updateGroup: PropTypes.func.isRequired,
   updateTrainers: PropTypes.func.isRequired,
   isLastGroup: PropTypes.bool.isRequired,
-  toggleIsLastGroup: PropTypes.func.isRequired,
+  setIsLastGroup: PropTypes.func.isRequired,
 };
 
 const TrainersIndexContainer = connect(mapStateToProps, mapDispatchToProps)(TrainersIndex);

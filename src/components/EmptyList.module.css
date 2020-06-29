@@ -1,0 +1,11 @@
+.notification {
+  background-color: #fffc52;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 24px;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+}

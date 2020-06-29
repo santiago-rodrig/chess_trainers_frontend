@@ -10,7 +10,7 @@ const SliderButtons = ({
   updateGroup,
   group,
   isLastGroup,
-  toggleIsLastGroup,
+  setIsLastGroup,
 }) => {
   const handleClick = (element, direction) => {
     if (element.classList.contains('sliderAnimated')) return;
@@ -28,7 +28,7 @@ const SliderButtons = ({
     } else if (group === 0) {
       alertify.warning('This is the first page');
     } else {
-      if (isLastGroup) toggleIsLastGroup();
+      if (isLastGroup) setIsLastGroup(false);
       updateGroup(group - 1);
       startFetching();
     }
@@ -59,7 +59,7 @@ SliderButtons.propTypes = {
   updateGroup: PropTypes.func.isRequired,
   group: PropTypes.number.isRequired,
   isLastGroup: PropTypes.bool.isRequired,
-  toggleIsLastGroup: PropTypes.func.isRequired,
+  setIsLastGroup: PropTypes.func.isRequired,
 };
 
 export default SliderButtons;

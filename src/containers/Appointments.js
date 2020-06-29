@@ -6,10 +6,11 @@ import CurrentPage from '../components/CurrentPage';
 import {
   updateAppointments,
   updateAppointmentsGroup,
-  toggleAppointmentsLastGroup,
+  setAppointmentsLastGroup,
 } from '../actions';
 import Loading from '../components/Loading';
 import SliderButtons from '../components/Appointments/SliderButtons';
+import EmptyList from '../components/EmptyList';
 
 const APIURL = 'http://localhost:4000/appointments/group/';
 
@@ -18,13 +19,14 @@ const GETOptions = {
   method: 'GET',
   headers: {
     'Content-Type': 'application/json',
+    Authorization: `Bearer ${window.sessionStorage.getItem('user_token')}`,
   },
 };
 
 const mapDispatchToProps = dispatch => ({
   updateAppointments: appointments => dispatch(updateAppointments(appointments)),
   updateAppointmentsGroup: group => dispatch(updateAppointmentsGroup(group)),
-  toggleAppointmentsLastGroup: () => dispatch(toggleAppointmentsLastGroup()),
+  setAppointmentsLastGroup: value => dispatch(setAppointmentsLastGroup(value)),
 });
 
 const mapStateToProps = state => ({
@@ -36,7 +38,7 @@ const mapStateToProps = state => ({
 const Appointments = ({
   updateAppointments,
   updateAppointmentsGroup,
-  toggleAppointmentsLastGroup,
+  setAppointmentsLastGroup,
   group,
   appointments,
   isLastGroup,
@@ -44,18 +46,20 @@ const Appointments = ({
   const [fetching, setFetching] = useState(true);
 
   useEffect(() => {
+    setFetching(true);
     updateAppointmentsGroup(0);
-  }, [updateAppointmentsGroup]);
+    setAppointmentsLastGroup(false);
+  }, [updateAppointmentsGroup, setFetching, setAppointmentsLastGroup]);
 
   const fetchAppointments = useCallback(() => {
     window.fetch(`${APIURL}${group}`, GETOptions)
       .then(response => response.json())
       .then(data => {
-        if (data.last_group) toggleAppointmentsLastGroup();
+        if (data.last_group) setAppointmentsLastGroup(true);
         updateAppointments(data.appointments);
         window.setTimeout(() => setFetching(false), 300, setFetching);
       });
-  }, [group, toggleAppointmentsLastGroup, updateAppointments]);
+  }, [group, setAppointmentsLastGroup, updateAppointments]);
 
   useEffect(() => {
     if (fetching) {
@@ -69,6 +73,12 @@ const Appointments = ({
 
   if (fetching) {
     renderedJSX = <Loading />;
+  } else if (appointments.length === 0) {
+    renderedJSX = (
+      <EmptyList>
+        You don&apos;t have any appointments
+      </EmptyList>
+    );
   } else {
     renderedJSX = (
       <>
@@ -77,7 +87,7 @@ const Appointments = ({
           group={group}
           updateGroup={updateAppointmentsGroup}
           isLastGroup={isLastGroup}
-          toggleIsLastGroup={toggleAppointmentsLastGroup}
+          setIsLastGroup={setAppointmentsLastGroup}
         />
         <AppointmentsList appointments={appointments} />
         <CurrentPage page={group + 1} />
@@ -91,7 +101,7 @@ const Appointments = ({
 Appointments.propTypes = {
   updateAppointments: PropTypes.func.isRequired,
   updateAppointmentsGroup: PropTypes.func.isRequired,
-  toggleAppointmentsLastGroup: PropTypes.func.isRequired,
+  setAppointmentsLastGroup: PropTypes.func.isRequired,
   group: PropTypes.number.isRequired,
   appointments: PropTypes.arrayOf(PropTypes.object).isRequired,
   isLastGroup: PropTypes.bool.isRequired,
