@@ -29,7 +29,7 @@ function App() {
 
   useEffect(() => {
     if (check) {
-      window.setTimeout(() => setCheck(true), 60000, setCheck);
+      window.setTimeout(() => setCheck(true), 600000, setCheck);
       const userToken = window.sessionStorage.getItem('user_token');
       if (userToken) {
         window.fetch(APIURL, POSTOptions({ token: userToken }))
@@ -48,6 +48,8 @@ function App() {
       }
     }
   }, [setLoggedIn, check, setCheck]);
+
+  console.log('LOGGED?', loggedIn);
 
   return (
     <>
