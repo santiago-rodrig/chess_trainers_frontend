@@ -36,9 +36,11 @@ const TrainerItem = ({ trainer }) => {
         .then(response => {
           if (response.status !== 200) throw new Error('Creation failed');
           alertify.success('Appointment created');
+          setSending(false);
         })
         .catch(err => {
           alertify.error(err.message);
+          setSending(false);
         });
     }
   }, [sending, setSending, trainer.name]);
