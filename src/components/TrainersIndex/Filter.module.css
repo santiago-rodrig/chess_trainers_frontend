@@ -1,0 +1,9 @@
+.filter {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  background-color: #333;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  color: #fcfcfc;
+}

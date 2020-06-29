@@ -7,6 +7,7 @@ import isLastGroupReducer from './isLastGroup';
 import appointmentsReducer from './appointments';
 import appointmentsGroupReducer from './appointmentsGroup';
 import isAppointmentsLastGroupReducer from './isAppointmentsLastGroup';
+import trainerNameFilterReducer from './trainerNameFilter';
 
 const mainReducer = combineReducers({
   group: groupReducer,
@@ -15,6 +16,7 @@ const mainReducer = combineReducers({
   appointmentsGroup: appointmentsGroupReducer,
   appointments: appointmentsReducer,
   isAppointmentsLastGroup: isAppointmentsLastGroupReducer,
+  trainerNameFilter: trainerNameFilterReducer,
 });
 
 export default mainReducer;

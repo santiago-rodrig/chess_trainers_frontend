@@ -5,9 +5,15 @@ import TrainerItem from '../components/TrainersIndex/TrainerItem';
 import SearchForm from '../components/TrainersIndex/SearchForm';
 import Indicators from '../components/TrainersIndex/Indicators';
 import SliderButtons from '../components/TrainersIndex/SliderButtons';
-import { updateGroup, updateTrainers, setIsLastGroup } from '../actions';
+import {
+  updateGroup,
+  updateTrainers,
+  setIsLastGroup,
+  setTrainerNameFilter,
+} from '../actions';
 import CurrentPage from '../components/CurrentPage';
 import Loading from '../components/Loading';
+import Filter from '../components/TrainersIndex/Filter';
 
 const APIURL = 'http://localhost:4000/trainers/group/';
 const GETOptions = {
@@ -23,12 +29,14 @@ const mapDispatchToProps = dispatch => ({
   updateGroup: group => dispatch(updateGroup(group)),
   updateTrainers: trainers => dispatch(updateTrainers(trainers)),
   setIsLastGroup: value => dispatch(setIsLastGroup(value)),
+  setTrainerNameFilter: filter => dispatch(setTrainerNameFilter(filter)),
 });
 
 const mapStateToProps = state => ({
   group: state.group,
   isLastGroup: state.isLastGroup,
   trainers: state.trainers,
+  trainerNameFilter: state.trainerNameFilter,
 });
 
 const TrainersIndex = ({
@@ -38,6 +46,8 @@ const TrainersIndex = ({
   updateTrainers,
   isLastGroup,
   setIsLastGroup,
+  trainerNameFilter,
+  setTrainerNameFilter,
 }) => {
   const [fetching, setFetching] = useState(true);
   const [currentTrainer, setCurrentTrainer] = useState(-1);
@@ -79,6 +89,10 @@ const TrainersIndex = ({
         <SearchForm />
         <CurrentPage page={group + 1} />
         <Indicators />
+        <Filter
+          trainerNameFilter={trainerNameFilter}
+          setTrainerNameFilter={setTrainerNameFilter}
+        />
         <SliderButtons
           startFetching={startFetching}
           updateGroup={updateGroup}
@@ -109,6 +123,8 @@ TrainersIndex.propTypes = {
   updateTrainers: PropTypes.func.isRequired,
   isLastGroup: PropTypes.bool.isRequired,
   setIsLastGroup: PropTypes.func.isRequired,
+  trainerNameFilter: PropTypes.string.isRequired,
+  setTrainerNameFilter: PropTypes.func.isRequired,
 };
 
 const TrainersIndexContainer = connect(mapStateToProps, mapDispatchToProps)(TrainersIndex);
