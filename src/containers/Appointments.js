@@ -55,7 +55,7 @@ const Appointments = ({
     window.fetch(`${APIURL}${group}`, GETOptions)
       .then(response => response.json())
       .then(data => {
-        if (data.last_group) setAppointmentsLastGroup(true);
+        setAppointmentsLastGroup(Boolean(data.last_group));
         updateAppointments(data.appointments);
         window.setTimeout(() => setFetching(false), 300, setFetching);
       });

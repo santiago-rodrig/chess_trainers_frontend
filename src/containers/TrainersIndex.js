@@ -47,7 +47,7 @@ const TrainersIndex = ({
       .then(response => response.json())
       .then(data => {
         updateTrainers(data.trainers);
-        if (data.last_group) setIsLastGroup(true);
+        setIsLastGroup(Boolean(data.last_group));
         setCurrentTrainer(0);
         window.setTimeout(() => setFetching(false), 500, setFetching);
       });
@@ -60,9 +60,10 @@ const TrainersIndex = ({
   }, [fetching, fetchTrainers]);
 
   useEffect(() => {
+    console.log('MOUTING!');
     updateGroup(0);
-    setFetching(true);
     setIsLastGroup(false);
+    setFetching(true);
   }, [setFetching, updateGroup, setIsLastGroup]);
 
   const startFetching = () => {
