@@ -66,14 +66,14 @@ function App() {
         <Switch>
           <Route exact path="/">
             {
-              loggedIn && !checking
+              loggedIn
                 ? <Redirect to="/appointments" />
                 : renderedJSX
             }
           </Route>
           <Route exact path="/trainers">
             {
-              loggedIn && !checking
+              loggedIn
                 ? (
                   <>
                     <Navbar setLoggedIn={setLoggedIn} />
@@ -86,7 +86,7 @@ function App() {
           </Route>
           <Route exact path="/appointments">
             {
-              loggedIn && !checking
+              loggedIn
                 ? (
                   <>
                     <Navbar setLoggedIn={setLoggedIn} />

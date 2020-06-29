@@ -14,14 +14,14 @@ import EmptyList from '../components/EmptyList';
 
 const APIURL = 'http://localhost:4000/appointments/group/';
 
-const GETOptions = {
+const GETOptions = token => ({
   mode: 'cors',
   method: 'GET',
   headers: {
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${window.sessionStorage.getItem('user_token')}`,
+    Authorization: `Bearer ${token}`,
   },
-};
+});
 
 const mapDispatchToProps = dispatch => ({
   updateAppointments: appointments => dispatch(updateAppointments(appointments)),
@@ -46,13 +46,12 @@ const Appointments = ({
   const [fetching, setFetching] = useState(true);
 
   useEffect(() => {
-    setFetching(true);
     updateAppointmentsGroup(0);
     setAppointmentsLastGroup(false);
   }, [updateAppointmentsGroup, setFetching, setAppointmentsLastGroup]);
 
   const fetchAppointments = useCallback(() => {
-    window.fetch(`${APIURL}${group}`, GETOptions)
+    window.fetch(`${APIURL}${group}`, GETOptions(window.sessionStorage.getItem('user_token')))
       .then(response => response.json())
       .then(data => {
         setAppointmentsLastGroup(Boolean(data.last_group));
