@@ -60,7 +60,6 @@ const TrainersIndex = ({
   }, [fetching, fetchTrainers]);
 
   useEffect(() => {
-    console.log('MOUTING!');
     updateGroup(0);
     setIsLastGroup(false);
     setFetching(true);
