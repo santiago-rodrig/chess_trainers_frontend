@@ -10,6 +10,8 @@ import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import Appointments from '../containers/Appointments';
 import Login from './Login';
+import Signup from './Signup';
+import Loading from './Loading';
 
 const APIURL = 'http://localhost:4000/logged_in';
 
@@ -26,30 +28,37 @@ const POSTOptions = body => ({
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
   const [check, setCheck] = useState(true);
+  const [checking, setChecking] = useState(true);
 
   useEffect(() => {
     if (check) {
-      window.setTimeout(() => setCheck(true), 600000, setCheck);
+      window.setTimeout(() => {
+        setChecking(true);
+        setCheck(true);
+      }, 600000, setCheck);
       const userToken = window.sessionStorage.getItem('user_token');
       if (userToken) {
         window.fetch(APIURL, POSTOptions({ token: userToken }))
           .then(response => {
             if (response.status !== 200) throw new Error();
             setLoggedIn(true);
+            window.setTimeout(() => setChecking(false), 500, setChecking);
             setCheck(false);
           })
           .catch(() => {
             setLoggedIn(false);
+            window.setTimeout(() => setChecking(false), 500, setChecking);
             setCheck(false);
           });
       } else {
         setLoggedIn(false);
+        window.setTimeout(() => setChecking(false), 500, setChecking);
         setCheck(false);
       }
     }
-  }, [setLoggedIn, check, setCheck]);
+  }, [setLoggedIn, check, setCheck, setChecking]);
 
-  console.log('LOGGED?', loggedIn);
+  const renderedJSX = checking ? <Loading /> : <Login setLoggedIn={setLoggedIn} />;
 
   return (
     <>
@@ -57,14 +66,14 @@ function App() {
         <Switch>
           <Route exact path="/">
             {
-              loggedIn
+              loggedIn && !checking
                 ? <Redirect to="/appointments" />
-                : <Login setLoggedIn={setLoggedIn} />
+                : renderedJSX
             }
           </Route>
           <Route exact path="/trainers">
             {
-              loggedIn
+              loggedIn && !checking
                 ? (
                   <>
                     <Navbar />
@@ -77,7 +86,7 @@ function App() {
           </Route>
           <Route exact path="/appointments">
             {
-              loggedIn
+              loggedIn && !checking
                 ? (
                   <>
                     <Navbar />
@@ -87,6 +96,9 @@ function App() {
                 )
                 : <Redirect to="/" />
             }
+          </Route>
+          <Route exact path="/signup">
+            <Signup setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
           </Route>
         </Switch>
       </Router>

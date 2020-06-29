@@ -9,14 +9,10 @@
   z-index: 1;
 }
 
-.notification {
-  font-family: 'Roboto Slab', serif;
-  text-align: center;
+.loading {
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  letter-spacing: 1px;
   z-index: 2;
-  color: #fcfcfc;
 }

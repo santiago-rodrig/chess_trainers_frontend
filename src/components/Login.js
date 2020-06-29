@@ -7,7 +7,7 @@ import loadingGif from '../images/loading.gif';
 
 const APIURL = 'http://localhost:4000/login';
 
-const GETOptions = body => ({
+const POSTOptions = body => ({
   mode: 'cors',
   method: 'POST',
   headers: {
@@ -32,7 +32,7 @@ const Login = ({ setLoggedIn }) => {
 
   useEffect(() => {
     if (sending) {
-      window.fetch(APIURL, GETOptions({ credentials: { name: username, password } }))
+      window.fetch(APIURL, POSTOptions({ credentials: { name: username, password } }))
         .then(response => {
           if (response.status === 200) {
             return response.json();
@@ -68,7 +68,7 @@ const Login = ({ setLoggedIn }) => {
         </label>
         <button type="submit">{sending ? <img width="20" src={loadingGif} alt="loading" /> : 'login'}</button>
       </form>
-      <Link to="http://www.google.com" className={styles.signupLink}>
+      <Link to="/signup" className={styles.signupLink}>
         Create a new account
       </Link>
       <footer className={styles.footerBox}>
