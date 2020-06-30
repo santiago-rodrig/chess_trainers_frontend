@@ -16,6 +16,7 @@ import {
 import CurrentPage from '../components/CurrentPage';
 import Loading from '../components/Loading';
 import Filter from '../components/TrainersIndex/Filter';
+import EmptyList from '../components/EmptyList';
 
 const APIURL = 'http://localhost:4000/trainers/group/';
 
@@ -141,6 +142,23 @@ const TrainersIndex = ({
 
   if (fetching) {
     renderedJSX = <Loading />;
+  } else if (trainers.length === 0) {
+    renderedJSX = (
+      <>
+        <Filter
+          amateurTrainerFilter={amateurTrainerFilter}
+          setAmateurTrainerFilter={setAmateurTrainerFilter}
+          intermediateTrainerFilter={intermediateTrainerFilter}
+          setIntermediateTrainerFilter={setIntermediateTrainerFilter}
+          expertTrainerFilter={expertTrainerFilter}
+          setExpertTrainerFilter={setExpertTrainerFilter}
+          trainerNameFilter={trainerNameFilter}
+          setTrainerNameFilter={setTrainerNameFilter}
+          resetCallback={resetCallback}
+        />
+        <EmptyList>There are no trainers to show</EmptyList>
+      </>
+    );
   } else {
     renderedJSX = (
       <>
@@ -166,7 +184,9 @@ const TrainersIndex = ({
           trainersCount={trainers.length}
           setIsLastGroup={setIsLastGroup}
         />
-        <main style={{ maxWidth: '86%', marginLeft: 'auto', marginRight: 'auto' }}>
+        <main
+          style={{ maxWidth: '86%', marginLeft: 'auto', marginRight: 'auto' }}
+        >
           <TrainerItem trainer={trainers[currentTrainer]} />
         </main>
       </>
