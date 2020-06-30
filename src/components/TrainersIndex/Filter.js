@@ -15,7 +15,15 @@ const Filter = ({ trainerNameFilter, setTrainerNameFilter }) => {
       <button className={styles.filter} type="button" onClick={handleClick}>
         <i className="fas fa-filter" />
       </button>
-      {displaying ? <FilterModal setDisplaying={setDisplaying} /> : ''}
+      {
+        displaying
+          ? <FilterModal
+              setDisplaying={setDisplaying}
+              trainerNameFilter={trainerNameFilter}
+              setTrainerNameFilter={setTrainerNameFilter}
+            />
+          : ''
+      }
     </>
   );
 };

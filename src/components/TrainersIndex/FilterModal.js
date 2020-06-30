@@ -1,8 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './FilterModal.module.css';
+import SearchForm from './SearchForm';
 
-const FilterModal = ({ setDisplaying }) => {
+const FilterModal = ({
+  trainerNameFilter,
+  setDisplaying,
+  setTrainerNameFilter,
+}) => {
   const closeHandleClick = () => setDisplaying(false);
 
   return (
@@ -16,6 +21,10 @@ const FilterModal = ({ setDisplaying }) => {
         >
           <i className="fas fa-window-close" />
         </button>
+        <SearchForm
+          trainerNameFilter={trainerNameFilter}
+          setTrainerNameFilter={setTrainerNameFilter}
+        />
       </div>
     </>
   );
@@ -23,6 +32,8 @@ const FilterModal = ({ setDisplaying }) => {
 
 FilterModal.propTypes = {
   setDisplaying: PropTypes.func.isRequired,
+  trainerNameFilter: PropTypes.string.isRequired,
+  setTrainerNameFilter: PropTypes.func.isRequired,
 };
 
 export default FilterModal;

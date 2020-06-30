@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import TrainerItem from '../components/TrainersIndex/TrainerItem';
-import SearchForm from '../components/TrainersIndex/SearchForm';
 import Indicators from '../components/TrainersIndex/Indicators';
 import SliderButtons from '../components/TrainersIndex/SliderButtons';
 import {
@@ -86,7 +85,6 @@ const TrainersIndex = ({
   } else {
     renderedJSX = (
       <>
-        <SearchForm />
         <CurrentPage page={group + 1} />
         <Indicators />
         <Filter

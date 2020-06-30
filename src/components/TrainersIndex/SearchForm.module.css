@@ -1,49 +1,21 @@
 .trainersSearch {
-  position: fixed;
-  right: 40px;
-  top: 40px;
-  width: 300px;
-  height: 40px;
-  transition: width 0.5s ease-in;
-  z-index: 3;
+  margin-top: 20px;
 }
 
-.searchFormExpanded {
-  width: 400px;
-}
-
-.searchLabel span {
-  visibility: hidden;
-  position: absolute;
-}
-
-.searchIcon {
-  box-sizing: content-box;
+.trainersSearch input {
   display: block;
-  position: absolute;
-  z-index: 4;
-  top: 50%;
-  left: 2px;
-  transform: translateY(-50%);
-  padding-left: 10px;
-  padding-right: 10px;
-  width: 36px;
-  height: 26px;
-}
-
-.searchInput {
-  display: block;
-  position: absolute;
   width: 100%;
-  height: 100%;
+  padding: 7px;
   border-radius: 4px;
   border: 1px solid #e8e8e8;
-  top: 50;
-  left: 0;
-  padding-left: 40px;
+  margin-top: 10px;
 }
 
-.searchInput:focus {
-  outline: none;
-  box-shadow: 3px 3px 0 0 #0398fc;
+.trainersSearch label {
+  display: block;
+  padding-bottom: 15px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
+

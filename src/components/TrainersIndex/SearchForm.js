@@ -1,25 +1,38 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './SearchForm.module.css';
 
-const SearchForm = () => (
-  <form
-    className={styles.trainersSearch}
-    id="searchForm"
-    onSubmit={e => e.preventDefault()}
-  >
-    <label htmlFor="trainersInput" className={styles.searchLabel}>
-      <span>Search</span>
-      <i className={`fas fa-search ${styles.searchIcon}`} aria-hidden="true" />
-      <input
-        type="text"
-        name="trainersInput"
-        className={styles.searchInput}
-        onFocus={() => window.document.getElementById('searchForm').classList.add(styles.searchFormExpanded)}
-        onBlur={() => window.document.getElementById('searchForm').classList.remove(styles.searchFormExpanded)}
-        placeholder="Looking for a specific trainer?"
-      />
-    </label>
-  </form>
-);
+const SearchForm = ({
+  trainerNameFilter,
+  setTrainerNameFilter,
+}) => {
+  const trainerNameHandleChange = e => {
+    setTrainerNameFilter(e.target.value);
+  };
+
+  return (
+    <form
+      className={styles.trainersSearch}
+      onSubmit={e => e.preventDefault()}
+    >
+      <label htmlFor="trainersInput" className={styles.searchLabel}>
+        Trainer name
+        <input
+          type="text"
+          name="trainersInput"
+          placeholder="pedro ruiz"
+          value={trainerNameFilter}
+          onChange={trainerNameHandleChange}
+        />
+      </label>
+    </form>
+  );
+};
+
+SearchForm.propTypes = {
+  trainerNameFilter: PropTypes.string.isRequired,
+  setTrainerNameFilter: PropTypes.func.isRequired,
+};
 
 export default SearchForm;
+
