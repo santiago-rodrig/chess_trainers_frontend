@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import AppointmentsList from '../components/Appointments/AppointmentsList';
 import CurrentPage from '../components/CurrentPage';
+
 import {
   updateAppointments,
   updateAppointmentsGroup,
   setAppointmentsLastGroup,
 } from '../actions';
+
 import Loading from '../components/Loading';
 import SliderButtons from '../components/Appointments/SliderButtons';
 import EmptyList from '../components/EmptyList';
@@ -80,7 +82,7 @@ const Appointments = ({
     );
   } else {
     renderedJSX = (
-      <>
+      <React.fragment>
         <SliderButtons
           startFetching={startFetching}
           group={group}
@@ -90,7 +92,7 @@ const Appointments = ({
         />
         <AppointmentsList appointments={appointments} />
         <CurrentPage page={group + 1} />
-      </>
+      </React.fragment>
     );
   }
 
