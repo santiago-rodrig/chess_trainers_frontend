@@ -15,6 +15,11 @@ import Loading from '../components/Loading';
 import Filter from '../components/TrainersIndex/Filter';
 
 const APIURL = 'http://localhost:4000/trainers/group/';
+
+const filtersBuilder = trainerNameFilter => (
+  `?tname=${trainerNameFilter}`
+);
+
 const GETOptions = {
   mode: 'cors',
   method: 'GET',
@@ -52,7 +57,8 @@ const TrainersIndex = ({
   const [currentTrainer, setCurrentTrainer] = useState(-1);
 
   const fetchTrainers = useCallback(() => {
-    window.fetch(`${APIURL}${group}`, GETOptions)
+    const filters = filtersBuilder(trainerNameFilter);
+    window.fetch(`${APIURL}${group}${filters}`, GETOptions)
       .then(response => response.json())
       .then(data => {
         updateTrainers(data.trainers);
@@ -60,7 +66,16 @@ const TrainersIndex = ({
         setCurrentTrainer(0);
         window.setTimeout(() => setFetching(false), 500, setFetching);
       });
-  }, [updateTrainers, setFetching, setCurrentTrainer, group, setIsLastGroup]);
+  },
+    [
+      updateTrainers,
+      setFetching,
+      setCurrentTrainer,
+      group,
+      setIsLastGroup,
+      trainerNameFilter,
+    ],
+  );
 
   useEffect(() => {
     if (fetching) {
@@ -68,11 +83,15 @@ const TrainersIndex = ({
     }
   }, [fetching, fetchTrainers]);
 
-  useEffect(() => {
+  const resetCallback = useCallback(() => {
     updateGroup(0);
     setIsLastGroup(false);
     setFetching(true);
   }, [setFetching, updateGroup, setIsLastGroup]);
+
+  useEffect(() => {
+    resetCallback();
+  }, [resetCallback]);
 
   const startFetching = () => {
     setFetching(true);
@@ -90,6 +109,7 @@ const TrainersIndex = ({
         <Filter
           trainerNameFilter={trainerNameFilter}
           setTrainerNameFilter={setTrainerNameFilter}
+          resetCallback={resetCallback}
         />
         <SliderButtons
           startFetching={startFetching}

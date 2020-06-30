@@ -7,8 +7,12 @@ const FilterModal = ({
   trainerNameFilter,
   setDisplaying,
   setTrainerNameFilter,
+  resetCallback,
 }) => {
-  const closeHandleClick = () => setDisplaying(false);
+  const closeHandleClick = () => {
+    resetCallback();
+    setDisplaying(false);
+  };
 
   return (
     <>
@@ -34,6 +38,7 @@ FilterModal.propTypes = {
   setDisplaying: PropTypes.func.isRequired,
   trainerNameFilter: PropTypes.string.isRequired,
   setTrainerNameFilter: PropTypes.func.isRequired,
+  resetCallback: PropTypes.func.isRequired,
 };
 
 export default FilterModal;

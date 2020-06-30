@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import styles from './Filter.module.css';
 import FilterModal from './FilterModal';
 
-const Filter = ({ trainerNameFilter, setTrainerNameFilter }) => {
+const Filter = ({
+  trainerNameFilter,
+  setTrainerNameFilter,
+  resetCallback,
+}) => {
   const [displaying, setDisplaying] = useState(false);
 
   const handleClick = () => {
@@ -21,6 +25,7 @@ const Filter = ({ trainerNameFilter, setTrainerNameFilter }) => {
               setDisplaying={setDisplaying}
               trainerNameFilter={trainerNameFilter}
               setTrainerNameFilter={setTrainerNameFilter}
+              resetCallback={resetCallback}
             />
           : ''
       }
