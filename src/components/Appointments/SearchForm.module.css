@@ -1,0 +1,49 @@
+.trainersSearch {
+  margin-top: 20px;
+}
+
+.trainersSearch input {
+  display: block;
+  width: 100%;
+  padding: 7px;
+  border-radius: 4px;
+  border: 1px solid #e8e8e8;
+  margin-top: 10px;
+}
+
+.trainersSearch label {
+  display: block;
+  padding-bottom: 15px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.expertiseBox {
+  padding-bottom: 15px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.expertiseBox label {
+  display: block;
+  width: auto;
+  padding-bottom: 5px;
+}
+
+.expertiseBox label input {
+  display: initial;
+  width: auto;
+}
+
+.expertise input {
+  margin-left: 5px;
+}
+
+.labelHeading {
+  margin-bottom: 7px;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+}
+

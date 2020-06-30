@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import AppointmentsList from '../components/Appointments/AppointmentsList';
 import CurrentPage from '../components/CurrentPage';
+import Filter from '../components/Appointments/Filter';
 
 import {
   updateAppointments,
@@ -47,10 +48,15 @@ const Appointments = ({
 }) => {
   const [fetching, setFetching] = useState(true);
 
-  useEffect(() => {
+  const resetCallback = useCallback(() => {
+    setFetching(true);
     updateAppointmentsGroup(0);
     setAppointmentsLastGroup(false);
   }, [updateAppointmentsGroup, setFetching, setAppointmentsLastGroup]);
+
+  useEffect(() => {
+    resetCallback();
+  }, [resetCallback]);
 
   const fetchAppointments = useCallback(() => {
     window.fetch(`${APIURL}${group}`, GETOptions(window.sessionStorage.getItem('user_token')))
@@ -82,7 +88,8 @@ const Appointments = ({
     );
   } else {
     renderedJSX = (
-      <div>
+      <React.Fragment>
+        <Filter resetCallback={resetCallback} />
         <SliderButtons
           startFetching={startFetching}
           group={group}
@@ -92,7 +99,7 @@ const Appointments = ({
         />
         <AppointmentsList appointments={appointments} />
         <CurrentPage page={group + 1} />
-      </div>
+      </React.Fragment>
     );
   }
 
