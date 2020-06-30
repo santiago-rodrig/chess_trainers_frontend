@@ -5,8 +5,10 @@ import SearchForm from './SearchForm';
 
 const FilterModal = ({
   trainerNameFilter,
+  expertTrainerFilter,
   setDisplaying,
   setTrainerNameFilter,
+  setExpertTrainerFilter,
   resetCallback,
 }) => {
   const closeHandleClick = () => {
@@ -27,7 +29,9 @@ const FilterModal = ({
         </button>
         <SearchForm
           trainerNameFilter={trainerNameFilter}
+          expertTrainerFilter={expertTrainerFilter}
           setTrainerNameFilter={setTrainerNameFilter}
+          setExpertTrainerFilter={setExpertTrainerFilter}
         />
       </div>
     </>
@@ -37,7 +41,9 @@ const FilterModal = ({
 FilterModal.propTypes = {
   setDisplaying: PropTypes.func.isRequired,
   trainerNameFilter: PropTypes.string.isRequired,
+  expertTrainerFilter: PropTypes.bool.isRequired,
   setTrainerNameFilter: PropTypes.func.isRequired,
+  setExpertTrainerFilter: PropTypes.func.isRequired,
   resetCallback: PropTypes.func.isRequired,
 };
 

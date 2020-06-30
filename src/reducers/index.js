@@ -8,6 +8,7 @@ import appointmentsReducer from './appointments';
 import appointmentsGroupReducer from './appointmentsGroup';
 import isAppointmentsLastGroupReducer from './isAppointmentsLastGroup';
 import trainerNameFilterReducer from './trainerNameFilter';
+import expertTrainerReducer from './expertTrainer';
 
 const mainReducer = combineReducers({
   group: groupReducer,
@@ -17,6 +18,7 @@ const mainReducer = combineReducers({
   appointments: appointmentsReducer,
   isAppointmentsLastGroup: isAppointmentsLastGroupReducer,
   trainerNameFilter: trainerNameFilterReducer,
+  expertTrainerFilter: expertTrainerReducer,
 });
 
 export default mainReducer;
