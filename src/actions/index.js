@@ -24,7 +24,12 @@ const setExpertTrainerFilter = filter => (
   { type: 'SET_EXPERT_TRAINER_FILTER', filter }
 );
 
+const setIntermediateTrainerFilter = filter => (
+  { type: 'SET_INTERMEDIATE_TRAINER_FILTER', filter }
+);
+
 export {
+  setIntermediateTrainerFilter,
   setExpertTrainerFilter,
   updateGroup,
   updateTrainers,

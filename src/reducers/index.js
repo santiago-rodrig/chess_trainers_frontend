@@ -9,8 +9,10 @@ import appointmentsGroupReducer from './appointmentsGroup';
 import isAppointmentsLastGroupReducer from './isAppointmentsLastGroup';
 import trainerNameFilterReducer from './trainerNameFilter';
 import expertTrainerReducer from './expertTrainer';
+import intermediateTrainerReducer from './intermediateTrainer';
 
 const mainReducer = combineReducers({
+  intermediateTrainerFilter: intermediateTrainerReducer,
   group: groupReducer,
   trainers: trainersReducer,
   isLastGroup: isLastGroupReducer,

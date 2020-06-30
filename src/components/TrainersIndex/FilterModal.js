@@ -4,6 +4,8 @@ import styles from './FilterModal.module.css';
 import SearchForm from './SearchForm';
 
 const FilterModal = ({
+  intermediateTrainerFilter,
+  setIntermediateTrainerFilter,
   trainerNameFilter,
   expertTrainerFilter,
   setDisplaying,
@@ -28,6 +30,8 @@ const FilterModal = ({
           <i className="fas fa-window-close" />
         </button>
         <SearchForm
+          intermediateTrainerFilter={intermediateTrainerFilter}
+          setIntermediateTrainerFilter={setIntermediateTrainerFilter}
           trainerNameFilter={trainerNameFilter}
           expertTrainerFilter={expertTrainerFilter}
           setTrainerNameFilter={setTrainerNameFilter}
@@ -39,6 +43,8 @@ const FilterModal = ({
 };
 
 FilterModal.propTypes = {
+  intermediateTrainerFilter: PropTypes.bool.isRequired,
+  setIntermediateTrainerFilter: PropTypes.func.isRequired,
   setDisplaying: PropTypes.func.isRequired,
   trainerNameFilter: PropTypes.string.isRequired,
   expertTrainerFilter: PropTypes.bool.isRequired,

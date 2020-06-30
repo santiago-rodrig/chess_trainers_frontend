@@ -7,13 +7,18 @@ const SearchForm = ({
   expertTrainerFilter,
   setTrainerNameFilter,
   setExpertTrainerFilter,
+  intermediateTrainerFilter,
+  setIntermediateTrainerFilter,
 }) => {
   const trainerNameHandleChange = e => setTrainerNameFilter(e.target.value);
 
-  const expertTrainerHandleChange = e => {
-    e.target.checked = !e.target.checked;
-    setExpertTrainerFilter(e.target.checked);
-  };
+  const intermediateTrainerHandleChange = () => (
+    setIntermediateTrainerFilter(!intermediateTrainerFilter)
+  );
+
+  const expertTrainerHandleChange = () => (
+    setExpertTrainerFilter(!expertTrainerFilter)
+  );
 
   return (
     <form
@@ -35,30 +40,30 @@ const SearchForm = ({
           Expertise
         </div>
         <label htmlFor="expertTrainer" className={styles.expertise}>
+          Expert
+          <input
+            type="checkbox"
+            checked={expertTrainerFilter}
+            name="expertTrainer"
+            onChange={expertTrainerHandleChange}
+          />
+        </label>
+        <label htmlFor="intermediateTrainer" className={styles.expertise}>
+          Intermediate
+          <input
+            type="checkbox"
+            checked={intermediateTrainerFilter}
+            name="intermediateTrainer"
+            onChange={intermediateTrainerHandleChange}
+          />
+        </label>
+        <label htmlFor="amateurTrainer" className={styles.expertise}>
           Amateur
           <input
             type="checkbox"
             checked
-            name="expertTrainer"
-            onChange={expertTrainerHandleChange}
-          />
-        </label>
-        <label htmlFor="expertTrainer" className={styles.expertise}>
-          Intermediate
-          <input
-            type="checkbox"
-            checked
-            name="expertTrainer"
-            onChange={expertTrainerHandleChange}
-          />
-        </label>
-        <label htmlFor="expertTrainer" className={styles.expertise}>
-          Expert
-          <input
-            type="checkbox"
-            checked
-            name="expertTrainer"
-            onChange={expertTrainerHandleChange}
+            name="amateurTrainer"
+            onChange={() => console.warning('not implemented')}
           />
         </label>
       </div>
@@ -71,6 +76,8 @@ SearchForm.propTypes = {
   expertTrainerFilter: PropTypes.bool.isRequired,
   setTrainerNameFilter: PropTypes.func.isRequired,
   setExpertTrainerFilter: PropTypes.func.isRequired,
+  intermediateTrainerFilter: PropTypes.bool.isRequired,
+  setIntermediateTrainerFilter: PropTypes.func.isRequired,
 };
 
 export default SearchForm;

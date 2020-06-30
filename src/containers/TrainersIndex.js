@@ -10,6 +10,7 @@ import {
   setIsLastGroup,
   setTrainerNameFilter,
   setExpertTrainerFilter,
+  setIntermediateTrainerFilter,
 } from '../actions';
 import CurrentPage from '../components/CurrentPage';
 import Loading from '../components/Loading';
@@ -20,12 +21,14 @@ const APIURL = 'http://localhost:4000/trainers/group/';
 const filtersBuilder = (
   trainerNameFilter,
   expertTrainerFilter,
+  intermediateTrainerFilter,
 ) => (
   [
     '?',
     [
       `tname=${trainerNameFilter}`,
       `texpert=${expertTrainerFilter ? 1 : 0}`,
+      `tintermediate=${intermediateTrainerFilter ? 1 : 0}`,
     ].join('&'),
   ].join('')
 );
@@ -45,6 +48,9 @@ const mapDispatchToProps = dispatch => ({
   setIsLastGroup: value => dispatch(setIsLastGroup(value)),
   setTrainerNameFilter: filter => dispatch(setTrainerNameFilter(filter)),
   setExpertTrainerFilter: filter => dispatch(setExpertTrainerFilter(filter)),
+  setIntermediateTrainerFilter: filter => (
+    dispatch(setIntermediateTrainerFilter(filter))
+  ),
 });
 
 const mapStateToProps = state => ({
@@ -53,6 +59,7 @@ const mapStateToProps = state => ({
   trainers: state.trainers,
   trainerNameFilter: state.trainerNameFilter,
   expertTrainerFilter: state.expertTrainerFilter,
+  intermediateTrainerFilter: state.intermediateTrainerFilter,
 });
 
 const TrainersIndex = ({
@@ -66,6 +73,8 @@ const TrainersIndex = ({
   setTrainerNameFilter,
   expertTrainerFilter,
   setExpertTrainerFilter,
+  intermediateTrainerFilter,
+  setIntermediateTrainerFilter,
 }) => {
   const [fetching, setFetching] = useState(true);
   const [currentTrainer, setCurrentTrainer] = useState(-1);
@@ -74,6 +83,7 @@ const TrainersIndex = ({
     const filters = filtersBuilder(
       trainerNameFilter,
       expertTrainerFilter,
+      intermediateTrainerFilter,
     );
 
     window.fetch(`${APIURL}${group}${filters}`, GETOptions)
@@ -92,6 +102,8 @@ const TrainersIndex = ({
       group,
       setIsLastGroup,
       trainerNameFilter,
+      expertTrainerFilter,
+      intermediateTrainerFilter,
     ],
   );
 
@@ -125,6 +137,8 @@ const TrainersIndex = ({
         <CurrentPage page={group + 1} />
         <Indicators />
         <Filter
+          intermediateTrainerFilter={intermediateTrainerFilter}
+          setIntermediateTrainerFilter={setIntermediateTrainerFilter}
           expertTrainerFilter={expertTrainerFilter}
           setExpertTrainerFilter={setExpertTrainerFilter}
           trainerNameFilter={trainerNameFilter}
@@ -165,8 +179,13 @@ TrainersIndex.propTypes = {
   setTrainerNameFilter: PropTypes.func.isRequired,
   expertTrainerFilter: PropTypes.bool.isRequired,
   setExpertTrainerFilter: PropTypes.func.isRequired,
+  intermediateTrainerFilter: PropTypes.bool.isRequired,
+  setIntermediateTrainerFilter: PropTypes.func.isRequired,
 };
 
-const TrainersIndexContainer = connect(mapStateToProps, mapDispatchToProps)(TrainersIndex);
+const TrainersIndexContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps)(TrainersIndex);
 
 export default TrainersIndexContainer;
+

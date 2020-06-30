@@ -4,6 +4,8 @@ import styles from './Filter.module.css';
 import FilterModal from './FilterModal';
 
 const Filter = ({
+  intermediateTrainerFilter,
+  setIntermediateTrainerFilter,
   trainerNameFilter,
   expertTrainerFilter,
   setTrainerNameFilter,
@@ -24,6 +26,8 @@ const Filter = ({
       {
         displaying
           ? <FilterModal
+              intermediateTrainerFilter={intermediateTrainerFilter}
+              setIntermediateTrainerFilter={setIntermediateTrainerFilter}
               setDisplaying={setDisplaying}
               trainerNameFilter={trainerNameFilter}
               expertTrainerFilter={expertTrainerFilter}
@@ -38,6 +42,8 @@ const Filter = ({
 };
 
 Filter.propTypes = {
+  intermediateTrainerFilter: PropTypes.bool.isRequired,
+  setIntermediateTrainerFilter: PropTypes.func.isRequired,
   trainerNameFilter: PropTypes.string.isRequired,
   expertTrainerFilter: PropTypes.bool.isRequired,
   setTrainerNameFilter: PropTypes.func.isRequired,
@@ -45,3 +51,4 @@ Filter.propTypes = {
 };
 
 export default Filter;
+
