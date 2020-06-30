@@ -60,7 +60,7 @@ const Appointments = ({
         updateAppointments(data.appointments);
         window.setTimeout(() => setFetching(false), 300, setFetching);
       });
-  }, [group, setAppointmentsLastGroup, updateAppointments]);
+  }, [group, setAppointmentsLastGroup, updateAppointments, setFetching]);
 
   useEffect(() => {
     if (fetching) {
@@ -82,7 +82,7 @@ const Appointments = ({
     );
   } else {
     renderedJSX = (
-      <React.fragment>
+      <div>
         <SliderButtons
           startFetching={startFetching}
           group={group}
@@ -92,7 +92,7 @@ const Appointments = ({
         />
         <AppointmentsList appointments={appointments} />
         <CurrentPage page={group + 1} />
-      </React.fragment>
+      </div>
     );
   }
 
