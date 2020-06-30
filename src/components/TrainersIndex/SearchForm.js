@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styles from './SearchForm.module.css';
 
 const SearchForm = ({
+  amateurTrainerFilter,
+  setAmateurTrainerFilter,
   trainerNameFilter,
   expertTrainerFilter,
   setTrainerNameFilter,
@@ -11,6 +13,10 @@ const SearchForm = ({
   setIntermediateTrainerFilter,
 }) => {
   const trainerNameHandleChange = e => setTrainerNameFilter(e.target.value);
+
+  const amateurTrainerHandleChange= () => (
+    setAmateurTrainerFilter(!amateurTrainerFilter)
+  );
 
   const intermediateTrainerHandleChange = () => (
     setIntermediateTrainerFilter(!intermediateTrainerFilter)
@@ -61,9 +67,9 @@ const SearchForm = ({
           Amateur
           <input
             type="checkbox"
-            checked
+            checked={amateurTrainerFilter}
             name="amateurTrainer"
-            onChange={() => console.warning('not implemented')}
+            onChange={amateurTrainerHandleChange}
           />
         </label>
       </div>
@@ -78,6 +84,8 @@ SearchForm.propTypes = {
   setExpertTrainerFilter: PropTypes.func.isRequired,
   intermediateTrainerFilter: PropTypes.bool.isRequired,
   setIntermediateTrainerFilter: PropTypes.func.isRequired,
+  amateurTrainerFilter: PropTypes.bool.isRequired,
+  setAmateurTrainerFilter: PropTypes.func.isRequired,
 };
 
 export default SearchForm;

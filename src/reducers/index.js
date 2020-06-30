@@ -10,8 +10,10 @@ import isAppointmentsLastGroupReducer from './isAppointmentsLastGroup';
 import trainerNameFilterReducer from './trainerNameFilter';
 import expertTrainerReducer from './expertTrainer';
 import intermediateTrainerReducer from './intermediateTrainer';
+import amateurTrainerReducer from './amateurTrainer';
 
 const mainReducer = combineReducers({
+  amateurTrainerFilter: amateurTrainerReducer,
   intermediateTrainerFilter: intermediateTrainerReducer,
   group: groupReducer,
   trainers: trainersReducer,
@@ -24,3 +26,4 @@ const mainReducer = combineReducers({
 });
 
 export default mainReducer;
+

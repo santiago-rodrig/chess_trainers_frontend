@@ -28,7 +28,12 @@ const setIntermediateTrainerFilter = filter => (
   { type: 'SET_INTERMEDIATE_TRAINER_FILTER', filter }
 );
 
+const setAmateurTrainerFilter = filter => (
+  { type: 'SET_AMATEUR_TRAINER_FILTER', filter }
+);
+
 export {
+  setAmateurTrainerFilter,
   setIntermediateTrainerFilter,
   setExpertTrainerFilter,
   updateGroup,
@@ -39,3 +44,4 @@ export {
   setAppointmentsLastGroup,
   setTrainerNameFilter,
 };
+
