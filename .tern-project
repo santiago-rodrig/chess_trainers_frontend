@@ -1,0 +1,16 @@
+{
+  "libs": [
+    "browser",
+    "react"
+  ],
+  "loadEagerly": [
+    "src/**/*.js"
+  ],
+  "plugins": {
+    "requirejs": {
+      "baseURL": "./",
+      "paths": {}
+    },
+    "node": {}
+  }
+}

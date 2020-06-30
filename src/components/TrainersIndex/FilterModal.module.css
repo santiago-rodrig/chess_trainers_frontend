@@ -1,0 +1,32 @@
+.filterModal {
+  position: fixed;
+  top: 8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  min-height: 400px;
+  background-color: pink;
+  z-index: 6;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #fcfcfc;
+}
+
+.dimmer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #333;
+  opacity: 0.7;
+  z-index: 5;
+}
+
+.close {
+  color: #ff2617;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+}
+

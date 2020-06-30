@@ -7,3 +7,7 @@
   border-bottom-right-radius: 8px;
   color: #fcfcfc;
 }
+
+.filter:focus {
+  outline-color: #0398fc;
+}
