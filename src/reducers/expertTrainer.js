@@ -8,4 +8,3 @@ const expertTrainerReducer = (state = true, action) => {
 };
 
 export default expertTrainerReducer;
-

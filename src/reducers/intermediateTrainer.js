@@ -8,4 +8,3 @@ const intermediateTrainerReducer = (state = true, action) => {
 };
 
 export default intermediateTrainerReducer;
-

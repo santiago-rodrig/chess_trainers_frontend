@@ -60,4 +60,3 @@ FilterModal.propTypes = {
 };
 
 export default FilterModal;
-

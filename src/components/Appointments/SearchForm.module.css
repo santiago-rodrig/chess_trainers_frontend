@@ -35,9 +35,6 @@
 .expertiseBox label input {
   display: initial;
   width: auto;
-}
-
-.expertise input {
   margin-left: 5px;
 }
 
@@ -46,4 +43,3 @@
   font-family: 'Roboto Slab', serif;
   font-weight: 700;
 }
-

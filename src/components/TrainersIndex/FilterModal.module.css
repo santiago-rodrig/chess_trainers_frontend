@@ -5,7 +5,6 @@
   transform: translateX(-50%);
   width: 400px;
   min-height: 400px;
-  background-color: pink;
   z-index: 6;
   padding: 10px;
   border-radius: 8px;
@@ -29,4 +28,3 @@
   border: none;
   font-size: 20px;
 }
-

@@ -8,4 +8,3 @@ const amateurTrainerReducer = (state = true, action) => {
 };
 
 export default amateurTrainerReducer;
-
