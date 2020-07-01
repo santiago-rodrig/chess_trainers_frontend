@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+
 import {
   BrowserRouter as Router,
   Route,
   Switch,
   Redirect,
 } from 'react-router-dom';
+
 import TrainersIndex from '../containers/TrainersIndex';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
@@ -12,6 +14,7 @@ import Appointments from '../containers/Appointments';
 import Login from './Login';
 import Signup from './Signup';
 import Loading from './Loading';
+import Account from './Account';
 
 const APIURL = 'http://localhost:4000/logged_in';
 
@@ -33,8 +36,9 @@ function App() {
 
   useEffect(() => {
     if (check) {
+      setCheck(false);
+
       window.setTimeout(() => {
-        setChecking(true);
         setCheck(true);
       }, 600000, setCheck);
 
@@ -49,63 +53,78 @@ function App() {
           })
           .then(data => {
             setLoggedUser(data.username);
+            setChecking(false);
             setLoggedIn(true);
-            window.setTimeout(() => setChecking(false), 500, setChecking);
-            setCheck(false);
           })
           .catch(() => {
+            setChecking(false);
             setLoggedIn(false);
-            window.setTimeout(() => setChecking(false), 500, setChecking);
-            setCheck(false);
           });
       } else {
+        setChecking(false);
         setLoggedIn(false);
-        window.setTimeout(() => setChecking(false), 500, setChecking);
-        setCheck(false);
       }
     }
   }, [setLoggedIn, check, setCheck, setChecking]);
 
-  const renderedJSX = checking
-    ? <Loading />
-    : <Login setLoggedUser={setLoggedUser} setLoggedIn={setLoggedIn} />;
+  let rootRenderedJSX = null;
+  let trainersRenderedJSX = null;
+  let appointmentsRenderedJSX = null;
+  let accountRenderedJSX = null;
+
+  if (checking) {
+    rootRenderedJSX = <Loading />;
+    trainersRenderedJSX = <Loading />;
+    appointmentsRenderedJSX = <Loading />;
+    accountRenderedJSX = <Loading />;
+  } else if (!loggedIn) {
+    rootRenderedJSX = <Login setLoggedUser={setLoggedUser} setLoggedIn={setLoggedIn} />;
+    trainersRenderedJSX = <Redirect to="/" />;
+    appointmentsRenderedJSX = <Redirect to="/" />;
+    accountRenderedJSX = <Redirect to="/" />;
+  } else {
+    rootRenderedJSX = <Redirect to="/appointments" />;
+
+    trainersRenderedJSX = (
+      <>
+        <Navbar setLoggedIn={setLoggedIn} loggedUser={loggedUser} />
+        <Sidebar />
+        <TrainersIndex />
+      </>
+    );
+
+    appointmentsRenderedJSX = (
+      <>
+        <Navbar setLoggedIn={setLoggedIn} loggedUser={loggedUser} />
+        <Sidebar />
+        <Appointments />
+      </>
+    );
+
+    accountRenderedJSX = (
+      <>
+        <Navbar setLoggedIn={setLoggedIn} loggedUser={loggedUser} />
+        <Sidebar />
+        <Account />
+      </>
+    );
+  }
 
   return (
     <>
       <Router>
         <Switch>
           <Route exact path="/">
-            {
-              loggedIn
-                ? <Redirect to="/appointments" />
-                : renderedJSX
-            }
+            {rootRenderedJSX}
           </Route>
           <Route exact path="/trainers">
-            {
-              loggedIn
-                ? (
-                  <>
-                    <Navbar setLoggedIn={setLoggedIn} loggedUser={loggedUser} />
-                    <Sidebar />
-                    <TrainersIndex />
-                  </>
-                )
-                : <Redirect to="/" />
-            }
+            {trainersRenderedJSX}
           </Route>
           <Route exact path="/appointments">
-            {
-              loggedIn
-                ? (
-                  <>
-                    <Navbar setLoggedIn={setLoggedIn} loggedUser={loggedUser} />
-                    <Sidebar />
-                    <Appointments />
-                  </>
-                )
-                : <Redirect to="/" />
-            }
+            {appointmentsRenderedJSX}
+          </Route>
+          <Route exact path="/account">
+            {accountRenderedJSX}
           </Route>
           <Route exact path="/signup">
             <Signup setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
