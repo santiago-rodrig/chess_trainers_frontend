@@ -14,7 +14,7 @@ const SearchForm = ({
 }) => {
   const trainerNameHandleChange = e => setTrainerNameFilter(e.target.value);
 
-  const amateurTrainerHandleChange= () => (
+  const amateurTrainerHandleChange = () => (
     setAmateurTrainerFilter(!amateurTrainerFilter)
   );
 
@@ -89,4 +89,3 @@ SearchForm.propTypes = {
 };
 
 export default SearchForm;
-

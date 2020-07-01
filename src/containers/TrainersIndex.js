@@ -88,23 +88,24 @@ const TrainersIndex = ({
   const [fetching, setFetching] = useState(true);
   const [currentTrainer, setCurrentTrainer] = useState(-1);
 
-  const fetchTrainers = useCallback(() => {
-    const filters = filtersBuilder(
-      trainerNameFilter,
-      expertTrainerFilter,
-      intermediateTrainerFilter,
-      amateurTrainerFilter,
-    );
+  const fetchTrainers = useCallback(
+    () => {
+      const filters = filtersBuilder(
+        trainerNameFilter,
+        expertTrainerFilter,
+        intermediateTrainerFilter,
+        amateurTrainerFilter,
+      );
 
-    window.fetch(`${APIURL}${group}${filters}`, GETOptions)
-      .then(response => response.json())
-      .then(data => {
-        updateTrainers(data.trainers);
-        setIsLastGroup(Boolean(data.last_group));
-        setCurrentTrainer(0);
-        window.setTimeout(() => setFetching(false), 500, setFetching);
-      });
-  },
+      window.fetch(`${APIURL}${group}${filters}`, GETOptions)
+        .then(response => response.json())
+        .then(data => {
+          updateTrainers(data.trainers);
+          setIsLastGroup(Boolean(data.last_group));
+          setCurrentTrainer(0);
+          window.setTimeout(() => setFetching(false), 500, setFetching);
+        });
+    },
     [
       group,
       setFetching,
@@ -219,7 +220,7 @@ TrainersIndex.propTypes = {
 
 const TrainersIndexContainer = connect(
   mapStateToProps,
-  mapDispatchToProps)(TrainersIndex);
+  mapDispatchToProps,
+)(TrainersIndex);
 
 export default TrainersIndexContainer;
-

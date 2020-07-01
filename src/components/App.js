@@ -105,7 +105,7 @@ function App() {
       <>
         <Navbar setLoggedIn={setLoggedIn} loggedUser={loggedUser} />
         <Sidebar />
-        <Account />
+        <Account setLoggedUser={setLoggedUser} />
       </>
     );
   }
