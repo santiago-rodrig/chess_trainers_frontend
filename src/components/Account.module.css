@@ -1,0 +1,17 @@
+.labelText {
+  font-family: 'Robot Slab', serif;
+  color: #333;
+}
+
+.inputLabel {
+  display: block;
+}
+
+.container {
+  max-width: 1200px;
+  width: 86%;
+}
+
+.heading {
+  text-align: center;
+}
