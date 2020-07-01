@@ -11,6 +11,7 @@ import trainerNameFilterReducer from './trainerNameFilter';
 import expertTrainerReducer from './expertTrainer';
 import intermediateTrainerReducer from './intermediateTrainer';
 import amateurTrainerReducer from './amateurTrainer';
+import appointmentStatusReducer from './appointmentStatus';
 
 const mainReducer = combineReducers({
   amateurTrainerFilter: amateurTrainerReducer,
@@ -23,7 +24,7 @@ const mainReducer = combineReducers({
   isAppointmentsLastGroup: isAppointmentsLastGroupReducer,
   trainerNameFilter: trainerNameFilterReducer,
   expertTrainerFilter: expertTrainerReducer,
+  appointmentStatus: appointmentStatusReducer,
 });
 
 export default mainReducer;
-

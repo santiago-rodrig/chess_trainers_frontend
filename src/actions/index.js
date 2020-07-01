@@ -32,7 +32,22 @@ const setAmateurTrainerFilter = filter => (
   { type: 'SET_AMATEUR_TRAINER_FILTER', filter }
 );
 
+const setAppointmentPendingStatus = status => (
+  { type: 'SET_APPOINTMENT_PENDING_STATUS', status }
+);
+
+const setAppointmentSuccessStatus = status => (
+  { type: 'SET_APPOINTMENT_SUCCESS_STATUS', status }
+);
+
+const setAppointmentFailedStatus = status => (
+  { type: 'SET_APPOINTMENT_FAILED_STATUS', status }
+);
+
 export {
+  setAppointmentPendingStatus,
+  setAppointmentSuccessStatus,
+  setAppointmentFailedStatus,
   setAmateurTrainerFilter,
   setIntermediateTrainerFilter,
   setExpertTrainerFilter,
@@ -44,4 +59,3 @@ export {
   setAppointmentsLastGroup,
   setTrainerNameFilter,
 };
-

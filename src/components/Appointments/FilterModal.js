@@ -8,6 +8,10 @@ const FilterModal = ({
   setDisplaying,
   trainerNameFilter,
   setTrainerNameFilter,
+  status,
+  setPendingStatus,
+  setSuccessStatus,
+  setFailedStatus,
 }) => {
   const closeHandleClick = () => {
     resetCallback();
@@ -28,6 +32,10 @@ const FilterModal = ({
         <SearchForm
           trainerNameFilter={trainerNameFilter}
           setTrainerNameFilter={setTrainerNameFilter}
+          setPendingStatus={setPendingStatus}
+          setSuccessStatus={setSuccessStatus}
+          setFailedStatus={setFailedStatus}
+          status={status}
         />
       </div>
     </>
@@ -39,6 +47,10 @@ FilterModal.propTypes = {
   resetCallback: PropTypes.func.isRequired,
   trainerNameFilter: PropTypes.string.isRequired,
   setTrainerNameFilter: PropTypes.func.isRequired,
+  status: PropTypes.string.isRequired,
+  setPendingStatus: PropTypes.func.isRequired,
+  setSuccessStatus: PropTypes.func.isRequired,
+  setFailedStatus: PropTypes.func.isRequired,
 };
 
 export default FilterModal;

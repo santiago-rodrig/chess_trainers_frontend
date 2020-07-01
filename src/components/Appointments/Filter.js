@@ -7,6 +7,10 @@ const Filter = ({
   resetCallback,
   trainerNameFilter,
   setTrainerNameFilter,
+  status,
+  setPendingStatus,
+  setSuccessStatus,
+  setFailedStatus,
 }) => {
   const [displaying, setDisplaying] = useState(false);
 
@@ -27,6 +31,10 @@ const Filter = ({
               setTrainerNameFilter={setTrainerNameFilter}
               resetCallback={resetCallback}
               setDisplaying={setDisplaying}
+              setPendingStatus={setPendingStatus}
+              setSuccessStatus={setSuccessStatus}
+              setFailedStatus={setFailedStatus}
+              status={status}
             />
           )
           : ''
@@ -39,6 +47,10 @@ Filter.propTypes = {
   resetCallback: PropTypes.func.isRequired,
   trainerNameFilter: PropTypes.string.isRequired,
   setTrainerNameFilter: PropTypes.func.isRequired,
+  status: PropTypes.string.isRequired,
+  setPendingStatus: PropTypes.func.isRequired,
+  setSuccessStatus: PropTypes.func.isRequired,
+  setFailedStatus: PropTypes.func.isRequired,
 };
 
 export default Filter;

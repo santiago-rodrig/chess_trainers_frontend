@@ -10,6 +10,9 @@ import {
   updateAppointmentsGroup,
   setAppointmentsLastGroup,
   setTrainerNameFilter,
+  setAppointmentPendingStatus,
+  setAppointmentSuccessStatus,
+  setAppointmentFailedStatus,
 } from '../actions';
 
 import Loading from '../components/Loading';
@@ -32,6 +35,9 @@ const mapDispatchToProps = dispatch => ({
   updateAppointmentsGroup: group => dispatch(updateAppointmentsGroup(group)),
   setAppointmentsLastGroup: value => dispatch(setAppointmentsLastGroup(value)),
   setTrainerNameFilter: filter => dispatch(setTrainerNameFilter(filter)),
+  setPendingStatus: status => dispatch(setAppointmentPendingStatus(status)),
+  setSuccessStatus: status => dispatch(setAppointmentSuccessStatus(status)),
+  setFailedStatus: status => dispatch(setAppointmentFailedStatus(status)),
 });
 
 const mapStateToProps = state => ({
@@ -39,13 +45,15 @@ const mapStateToProps = state => ({
   appointments: state.appointments,
   isLastGroup: state.isAppointmentsLastGroup,
   trainerNameFilter: state.trainerNameFilter,
+  status: state.appointmentStatus,
 });
 
-const filtersBuilder = trainerNameFilter => (
+const filtersBuilder = (trainerNameFilter, status) => (
   [
     '?',
     [
       `tname=${trainerNameFilter}`,
+      `status=${status}`,
     ].join('&'),
   ].join('')
 );
@@ -59,6 +67,10 @@ const Appointments = ({
   isLastGroup,
   trainerNameFilter,
   setTrainerNameFilter,
+  status,
+  setPendingStatus,
+  setSuccessStatus,
+  setFailedStatus,
 }) => {
   const [fetching, setFetching] = useState(true);
 
@@ -78,7 +90,7 @@ const Appointments = ({
 
   const fetchAppointments = useCallback(
     () => {
-      const filters = filtersBuilder(trainerNameFilter);
+      const filters = filtersBuilder(trainerNameFilter, status);
 
       window.fetch(`${APIURL}${group}${filters}`, GETOptions(window.sessionStorage.getItem('user_token')))
         .then(response => response.json())
@@ -94,6 +106,7 @@ const Appointments = ({
       updateAppointments,
       setFetching,
       trainerNameFilter,
+      status,
     ],
   );
 
@@ -111,9 +124,20 @@ const Appointments = ({
     renderedJSX = <Loading />;
   } else if (appointments.length === 0) {
     renderedJSX = (
-      <EmptyList>
-        You don&apos;t have any appointments
-      </EmptyList>
+      <>
+        <Filter
+          resetCallback={resetCallback}
+          trainerNameFilter={trainerNameFilter}
+          setTrainerNameFilter={setTrainerNameFilter}
+          status={status}
+          setPendingStatus={setPendingStatus}
+          setSuccessStatus={setSuccessStatus}
+          setFailedStatus={setFailedStatus}
+        />
+        <EmptyList>
+          You don&apos;t have any appointments
+        </EmptyList>
+      </>
     );
   } else {
     renderedJSX = (
@@ -122,6 +146,10 @@ const Appointments = ({
           resetCallback={resetCallback}
           trainerNameFilter={trainerNameFilter}
           setTrainerNameFilter={setTrainerNameFilter}
+          status={status}
+          setPendingStatus={setPendingStatus}
+          setSuccessStatus={setSuccessStatus}
+          setFailedStatus={setFailedStatus}
         />
         <SliderButtons
           startFetching={startFetching}
@@ -148,6 +176,10 @@ Appointments.propTypes = {
   isLastGroup: PropTypes.bool.isRequired,
   trainerNameFilter: PropTypes.string.isRequired,
   setTrainerNameFilter: PropTypes.func.isRequired,
+  status: PropTypes.string.isRequired,
+  setPendingStatus: PropTypes.func.isRequired,
+  setSuccessStatus: PropTypes.func.isRequired,
+  setFailedStatus: PropTypes.func.isRequired,
 };
 
 const AppointmentsContainer = connect(mapStateToProps, mapDispatchToProps)(Appointments);
