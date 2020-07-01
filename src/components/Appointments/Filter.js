@@ -5,6 +5,8 @@ import FilterModal from './FilterModal';
 
 const Filter = ({
   resetCallback,
+  trainerNameFilter,
+  setTrainerNameFilter,
 }) => {
   const [displaying, setDisplaying] = useState(false);
 
@@ -13,25 +15,30 @@ const Filter = ({
   };
 
   return (
-    <React.Fragment>
+    <>
       <button className={styles.filter} type="button" onClick={handleClick}>
         <i className="fas fa-filter" />
       </button>
       {
         displaying
-          ? <FilterModal
-            resetCallback={resetCallback}
-            setDisplaying={setDisplaying}
-          />
+          ? (
+            <FilterModal
+              trainerNameFilter={trainerNameFilter}
+              setTrainerNameFilter={setTrainerNameFilter}
+              resetCallback={resetCallback}
+              setDisplaying={setDisplaying}
+            />
+          )
           : ''
       }
-    </React.Fragment>
+    </>
   );
 };
 
 Filter.propTypes = {
   resetCallback: PropTypes.func.isRequired,
+  trainerNameFilter: PropTypes.string.isRequired,
+  setTrainerNameFilter: PropTypes.func.isRequired,
 };
 
 export default Filter;
-

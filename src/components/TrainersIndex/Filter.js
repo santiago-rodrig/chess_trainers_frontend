@@ -27,18 +27,20 @@ const Filter = ({
       </button>
       {
         displaying
-          ? <FilterModal
-            amateurTrainerFilter={amateurTrainerFilter}
-            setAmateurTrainerFilter={setAmateurTrainerFilter}
-            intermediateTrainerFilter={intermediateTrainerFilter}
-            setIntermediateTrainerFilter={setIntermediateTrainerFilter}
-            setDisplaying={setDisplaying}
-            trainerNameFilter={trainerNameFilter}
-            expertTrainerFilter={expertTrainerFilter}
-            setTrainerNameFilter={setTrainerNameFilter}
-            setExpertTrainerFilter={setExpertTrainerFilter}
-            resetCallback={resetCallback}
-          />
+          ? (
+            <FilterModal
+              amateurTrainerFilter={amateurTrainerFilter}
+              setAmateurTrainerFilter={setAmateurTrainerFilter}
+              intermediateTrainerFilter={intermediateTrainerFilter}
+              setIntermediateTrainerFilter={setIntermediateTrainerFilter}
+              setDisplaying={setDisplaying}
+              trainerNameFilter={trainerNameFilter}
+              expertTrainerFilter={expertTrainerFilter}
+              setTrainerNameFilter={setTrainerNameFilter}
+              setExpertTrainerFilter={setExpertTrainerFilter}
+              resetCallback={resetCallback}
+            />
+          )
           : ''
       }
     </>
@@ -54,7 +56,7 @@ Filter.propTypes = {
   expertTrainerFilter: PropTypes.bool.isRequired,
   setTrainerNameFilter: PropTypes.func.isRequired,
   setExpertTrainerFilter: PropTypes.func.isRequired,
+  resetCallback: PropTypes.func.isRequired,
 };
 
 export default Filter;
-

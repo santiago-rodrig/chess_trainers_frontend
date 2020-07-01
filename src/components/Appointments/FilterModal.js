@@ -6,6 +6,8 @@ import SearchForm from './SearchForm';
 const FilterModal = ({
   resetCallback,
   setDisplaying,
+  trainerNameFilter,
+  setTrainerNameFilter,
 }) => {
   const closeHandleClick = () => {
     resetCallback();
@@ -13,7 +15,7 @@ const FilterModal = ({
   };
 
   return (
-    <React.Fragment>
+    <>
       <div className={styles.dimmer} />
       <div className={styles.filterModal}>
         <button
@@ -24,15 +26,19 @@ const FilterModal = ({
           <i className="fas fa-window-close" />
         </button>
         <SearchForm
+          trainerNameFilter={trainerNameFilter}
+          setTrainerNameFilter={setTrainerNameFilter}
         />
       </div>
-    </React.Fragment>
+    </>
   );
 };
 
 FilterModal.propTypes = {
   setDisplaying: PropTypes.func.isRequired,
   resetCallback: PropTypes.func.isRequired,
+  trainerNameFilter: PropTypes.string.isRequired,
+  setTrainerNameFilter: PropTypes.func.isRequired,
 };
 
 export default FilterModal;

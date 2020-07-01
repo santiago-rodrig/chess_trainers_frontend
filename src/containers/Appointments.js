@@ -9,6 +9,7 @@ import {
   updateAppointments,
   updateAppointmentsGroup,
   setAppointmentsLastGroup,
+  setTrainerNameFilter,
 } from '../actions';
 
 import Loading from '../components/Loading';
@@ -30,13 +31,24 @@ const mapDispatchToProps = dispatch => ({
   updateAppointments: appointments => dispatch(updateAppointments(appointments)),
   updateAppointmentsGroup: group => dispatch(updateAppointmentsGroup(group)),
   setAppointmentsLastGroup: value => dispatch(setAppointmentsLastGroup(value)),
+  setTrainerNameFilter: filter => dispatch(setTrainerNameFilter(filter)),
 });
 
 const mapStateToProps = state => ({
   group: state.appointmentsGroup,
   appointments: state.appointments,
   isLastGroup: state.isAppointmentsLastGroup,
+  trainerNameFilter: state.trainerNameFilter,
 });
+
+const filtersBuilder = trainerNameFilter => (
+  [
+    '?',
+    [
+      `tname=${trainerNameFilter}`,
+    ].join('&'),
+  ].join('')
+);
 
 const Appointments = ({
   updateAppointments,
@@ -45,6 +57,8 @@ const Appointments = ({
   group,
   appointments,
   isLastGroup,
+  trainerNameFilter,
+  setTrainerNameFilter,
 }) => {
   const [fetching, setFetching] = useState(true);
 
@@ -58,15 +72,30 @@ const Appointments = ({
     resetCallback();
   }, [resetCallback]);
 
-  const fetchAppointments = useCallback(() => {
-    window.fetch(`${APIURL}${group}`, GETOptions(window.sessionStorage.getItem('user_token')))
-      .then(response => response.json())
-      .then(data => {
-        setAppointmentsLastGroup(Boolean(data.last_group));
-        updateAppointments(data.appointments);
-        window.setTimeout(() => setFetching(false), 300, setFetching);
-      });
-  }, [group, setAppointmentsLastGroup, updateAppointments, setFetching]);
+  useEffect(() => {
+    setTrainerNameFilter('');
+  }, [setTrainerNameFilter]);
+
+  const fetchAppointments = useCallback(
+    () => {
+      const filters = filtersBuilder(trainerNameFilter);
+
+      window.fetch(`${APIURL}${group}${filters}`, GETOptions(window.sessionStorage.getItem('user_token')))
+        .then(response => response.json())
+        .then(data => {
+          setAppointmentsLastGroup(Boolean(data.last_group));
+          updateAppointments(data.appointments);
+          window.setTimeout(() => setFetching(false), 300, setFetching);
+        });
+    },
+    [
+      group,
+      setAppointmentsLastGroup,
+      updateAppointments,
+      setFetching,
+      trainerNameFilter,
+    ],
+  );
 
   useEffect(() => {
     if (fetching) {
@@ -88,8 +117,12 @@ const Appointments = ({
     );
   } else {
     renderedJSX = (
-      <React.Fragment>
-        <Filter resetCallback={resetCallback} />
+      <>
+        <Filter
+          resetCallback={resetCallback}
+          trainerNameFilter={trainerNameFilter}
+          setTrainerNameFilter={setTrainerNameFilter}
+        />
         <SliderButtons
           startFetching={startFetching}
           group={group}
@@ -99,7 +132,7 @@ const Appointments = ({
         />
         <AppointmentsList appointments={appointments} />
         <CurrentPage page={group + 1} />
-      </React.Fragment>
+      </>
     );
   }
 
@@ -113,6 +146,8 @@ Appointments.propTypes = {
   group: PropTypes.number.isRequired,
   appointments: PropTypes.arrayOf(PropTypes.object).isRequired,
   isLastGroup: PropTypes.bool.isRequired,
+  trainerNameFilter: PropTypes.string.isRequired,
+  setTrainerNameFilter: PropTypes.func.isRequired,
 };
 
 const AppointmentsContainer = connect(mapStateToProps, mapDispatchToProps)(Appointments);
