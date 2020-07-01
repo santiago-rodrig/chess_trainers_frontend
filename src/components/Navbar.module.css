@@ -14,4 +14,16 @@
   left: 0;
   z-index: 3;
   padding: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.username {
+  color: #b0b0b0;
+  font-size: 24px;
+  margin-left: 25px;
+}
+
+.username strong {
+  color: #fcfcfc;
 }

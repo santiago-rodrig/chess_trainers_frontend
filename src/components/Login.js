@@ -16,7 +16,7 @@ const POSTOptions = body => ({
   body: JSON.stringify(body),
 });
 
-const Login = ({ setLoggedIn }) => {
+const Login = ({ setLoggedIn, setLoggedUser }) => {
   const usernameRef = useRef();
   const passwordRef = useRef();
   const [sending, setSending] = useState(false);
@@ -41,18 +41,32 @@ const Login = ({ setLoggedIn }) => {
         })
         .then(data => {
           window.sessionStorage.setItem('user_token', data.token);
-          window.setTimeout(() => {
-            setSending(false);
-            alertify.success('Logged in');
-            window.setTimeout(() => setLoggedIn(true), 500, setLoggedIn);
-          }, 300, setSending);
+
+          window.setTimeout(
+            () => {
+              setSending(false);
+              alertify.success('Logged in');
+
+              window.setTimeout(
+                () => {
+                  setLoggedUser(data.username);
+                  setLoggedIn(true);
+                },
+                500,
+                setLoggedIn,
+                setLoggedUser,
+              );
+            },
+            300,
+            setSending,
+          );
         }, error => {
           alertify.error(error.message);
           setLoggedIn(false);
           setSending(false);
         });
     }
-  }, [sending, setSending, username, password, setLoggedIn]);
+  }, [sending, setSending, username, password, setLoggedIn, setLoggedUser]);
 
   return (
     <div className={styles.container}>
@@ -80,6 +94,7 @@ const Login = ({ setLoggedIn }) => {
 
 Login.propTypes = {
   setLoggedIn: PropTypes.func.isRequired,
+  setLoggedUser: PropTypes.func.isRequired,
 };
 
 export default Login;

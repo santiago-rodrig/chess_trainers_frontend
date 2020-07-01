@@ -15,18 +15,19 @@ import Loading from './Loading';
 
 const APIURL = 'http://localhost:4000/logged_in';
 
-const POSTOptions = body => ({
+const GETOptions = token => ({
   mode: 'cors',
-  method: 'POST',
+  method: 'GET',
   headers: {
     'Content-Type': 'application/json',
     Accept: '*/*',
+    Authorization: `Bearer ${token}`,
   },
-  body: JSON.stringify(body),
 });
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedUser, setLoggedUser] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [check, setCheck] = useState(true);
   const [checking, setChecking] = useState(true);
 
@@ -36,11 +37,18 @@ function App() {
         setChecking(true);
         setCheck(true);
       }, 600000, setCheck);
+
       const userToken = window.sessionStorage.getItem('user_token');
+
       if (userToken) {
-        window.fetch(APIURL, POSTOptions({ token: userToken }))
+        window.fetch(APIURL, GETOptions(userToken))
           .then(response => {
             if (response.status !== 200) throw new Error();
+
+            return response.json();
+          })
+          .then(data => {
+            setLoggedUser(data.username);
             setLoggedIn(true);
             window.setTimeout(() => setChecking(false), 500, setChecking);
             setCheck(false);
@@ -58,7 +66,9 @@ function App() {
     }
   }, [setLoggedIn, check, setCheck, setChecking]);
 
-  const renderedJSX = checking ? <Loading /> : <Login setLoggedIn={setLoggedIn} />;
+  const renderedJSX = checking
+    ? <Loading />
+    : <Login setLoggedUser={setLoggedUser} setLoggedIn={setLoggedIn} />;
 
   return (
     <>
@@ -76,7 +86,7 @@ function App() {
               loggedIn
                 ? (
                   <>
-                    <Navbar setLoggedIn={setLoggedIn} />
+                    <Navbar setLoggedIn={setLoggedIn} loggedUser={loggedUser} />
                     <Sidebar />
                     <TrainersIndex />
                   </>
@@ -89,7 +99,7 @@ function App() {
               loggedIn
                 ? (
                   <>
-                    <Navbar setLoggedIn={setLoggedIn} />
+                    <Navbar setLoggedIn={setLoggedIn} loggedUser={loggedUser} />
                     <Sidebar />
                     <Appointments />
                   </>

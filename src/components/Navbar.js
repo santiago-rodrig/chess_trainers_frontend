@@ -4,7 +4,7 @@ import styles from './Navbar.module.css';
 import sidebarStyles from './Sidebar.module.css';
 import Logout from './Logout';
 
-const Navbar = ({ setLoggedIn }) => {
+const Navbar = ({ setLoggedIn, loggedUser }) => {
   const handleClick = () => {
     const sidebar = window
       .document.getElementsByClassName(sidebarStyles.sidebar)[0];
@@ -26,12 +26,20 @@ const Navbar = ({ setLoggedIn }) => {
         <i className="fas fa-bars" />
       </button>
       <Logout setLoggedIn={setLoggedIn} />
+      <div className={styles.username}>
+        Logged as
+        {' '}
+        <strong>
+          {loggedUser}
+        </strong>
+      </div>
     </nav>
   );
 };
 
 Navbar.propTypes = {
   setLoggedIn: PropTypes.func.isRequired,
+  loggedUser: PropTypes.string.isRequired,
 };
 
 export default Navbar;
