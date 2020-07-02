@@ -5,7 +5,7 @@ import alertify from 'alertifyjs/build/alertify';
 import styles from './Login.module.css';
 import loadingGif from '../images/loading.gif';
 
-const APIURL = 'http://localhost:4000/login';
+const APIURL = 'https://srodrig-chess-trainers.herokuapp.com/login';
 
 const POSTOptions = body => ({
   mode: 'cors',

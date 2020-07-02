@@ -10,8 +10,8 @@ import alertify from 'alertifyjs/build/alertify';
 import styles from './Account.module.css';
 import loadingGif from '../images/loading.gif';
 
-const APIURL = 'http://localhost:4000/users/update';
-const userDataAPIURL = 'http://localhost:4000/user';
+const APIURL = 'https://srodrig-chess-trainers.herokuapp.com/users/update';
+const userDataAPIURL = 'https://srodrig-chess-trainers.herokuapp.com/user';
 
 const GETOptions = token => ({
   mode: 'cors',

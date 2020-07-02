@@ -19,7 +19,7 @@ import Loading from '../components/Loading';
 import SliderButtons from '../components/Appointments/SliderButtons';
 import EmptyList from '../components/EmptyList';
 
-const APIURL = 'http://localhost:4000/appointments/group/';
+const APIURL = 'https://srodrig-chess-trainers.herokuapp.com/appointments/group/';
 
 const GETOptions = token => ({
   mode: 'cors',

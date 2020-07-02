@@ -18,7 +18,7 @@ import Loading from '../components/Loading';
 import Filter from '../components/TrainersIndex/Filter';
 import EmptyList from '../components/EmptyList';
 
-const APIURL = 'http://localhost:4000/trainers/group/';
+const APIURL = 'https://srodrig-chess-trainers.herokuapp.com/trainers/group/';
 
 const filtersBuilder = (
   trainerNameFilter,

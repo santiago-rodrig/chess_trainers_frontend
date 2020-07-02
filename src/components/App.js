@@ -16,7 +16,7 @@ import Signup from './Signup';
 import Loading from './Loading';
 import Account from './Account';
 
-const APIURL = 'http://localhost:4000/logged_in';
+const APIURL = 'https://srodrig-chess-trainers.herokuapp.com/logged_in';
 
 const GETOptions = token => ({
   mode: 'cors',

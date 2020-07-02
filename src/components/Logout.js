@@ -4,7 +4,7 @@ import alertify from 'alertifyjs/build/alertify';
 import loadingGif from '../images/loading.gif';
 import styles from './Logout.module.css';
 
-const APIURL = 'http://localhost:4000/logout';
+const APIURL = 'https://srodrig-chess-trainers.herokuapp.com/logout';
 
 const POSTOptions = body => ({
   mode: 'cors',

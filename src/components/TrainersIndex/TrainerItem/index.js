@@ -6,7 +6,7 @@ import './TrainerItemTransitions.css';
 import Avatar from './Avatar';
 import Details from './Details';
 
-const APIURL = 'http://localhost:4000/appointments';
+const APIURL = 'https://srodrig-chess-trainers.herokuapp.com/appointments';
 
 const POSTOptions = body => ({
   mode: 'cors',
