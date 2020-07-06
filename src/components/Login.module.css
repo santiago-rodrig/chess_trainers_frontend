@@ -38,18 +38,16 @@
   font-family: 'Roboto Slab', serif;
   letter-spacing: 1px;
   font-weight: 700;
-  border: outset;
+  border: solid;
+  border-color: #e8e8e8;
   background-color: #0398fc;
   color: #fcfcfc;
   width: 100px;
+  height: 65px;
 }
 
 .loginForm button:focus {
   outline: none;
-}
-
-.loginForm button:active {
-  border: inset;
 }
 
 .logo {
