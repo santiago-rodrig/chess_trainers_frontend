@@ -71,7 +71,6 @@ const FilterModal = ({
     }
   };
 
-
   return (
     <fragment>
       <div className={styles.dimmer} />

@@ -4,11 +4,7 @@ import styles from './SearchForm.module.css';
 
 const SearchForm = ({
   trainerNameFilter,
-  setTrainerNameFilter,
   status,
-  setPendingStatus,
-  setSuccessStatus,
-  setFailedStatus,
   handleSubmit,
   handleTrainerNameChange,
   handlePendingChange,
@@ -67,12 +63,12 @@ const SearchForm = ({
 
 SearchForm.propTypes = {
   trainerNameFilter: PropTypes.string.isRequired,
-  setTrainerNameFilter: PropTypes.func.isRequired,
   status: PropTypes.string.isRequired,
-  setPendingStatus: PropTypes.func.isRequired,
-  setSuccessStatus: PropTypes.func.isRequired,
-  setFailedStatus: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  handleTrainerNameChange: PropTypes.func.isRequired,
+  handlePendingChange: PropTypes.func.isRequired,
+  handleSuccessChange: PropTypes.func.isRequired,
+  handleFailedChange: PropTypes.func.isRequired,
 };
 
 export default SearchForm;

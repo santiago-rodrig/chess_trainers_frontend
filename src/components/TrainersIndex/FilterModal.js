@@ -15,10 +15,25 @@ const FilterModal = ({
   setExpertTrainerFilter,
   resetCallback,
 }) => {
-  const [previousTrainerNameFilter, setPreviousTrainerNameFilter] = useState(trainerNameFilter);
-  const [previousExpertTrainerFilter, setPreviousExpertTrainerFilter] = useState(expertTrainerFilter);
-  const [previousIntermediateTrainerFilter, setPreviousIntermediateTrainerFilter] = useState(intermediateTrainerFilter);
-  const [previousAmateurTrainerFilter, setPreviousAmateurTrainerFilter] = useState(amateurTrainerFilter);
+  const [
+    previousTrainerNameFilter,
+    setPreviousTrainerNameFilter,
+  ] = useState(trainerNameFilter);
+
+  const [
+    previousExpertTrainerFilter,
+    setPreviousExpertTrainerFilter,
+  ] = useState(expertTrainerFilter);
+
+  const [
+    previousIntermediateTrainerFilter,
+    setPreviousIntermediateTrainerFilter,
+  ] = useState(intermediateTrainerFilter);
+
+  const [
+    previousAmateurTrainerFilter,
+    setPreviousAmateurTrainerFilter,
+  ] = useState(amateurTrainerFilter);
 
   const resetFilters = () => {
     setTrainerNameFilter(previousTrainerNameFilter);
