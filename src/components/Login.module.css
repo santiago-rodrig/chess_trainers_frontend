@@ -38,12 +38,12 @@
   font-family: 'Roboto Slab', serif;
   letter-spacing: 1px;
   font-weight: 700;
-  border: solid;
-  border-color: #e8e8e8;
   background-color: #0398fc;
   color: #fcfcfc;
   width: 100px;
   height: 65px;
+  border: none;
+  border-radius: 8px;
 }
 
 .loginForm button:focus {

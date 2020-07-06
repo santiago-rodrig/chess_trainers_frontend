@@ -8,11 +8,11 @@
   letter-spacing: 1px;
   padding: 10px;
   background-color: #ff2617;
-  border-style: outset;
   margin-left: 25px;
   width: 140px;
-  border-color: #e8e8e8;
-  border-width: 2px;
+  height: 65px;
+  border: none;
+  border-radius: 8px;
 }
 
 .logout:active {
