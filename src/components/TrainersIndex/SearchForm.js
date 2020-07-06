@@ -11,6 +11,7 @@ const SearchForm = ({
   setExpertTrainerFilter,
   intermediateTrainerFilter,
   setIntermediateTrainerFilter,
+  handleSubmit,
 }) => {
   const trainerNameHandleChange = e => setTrainerNameFilter(e.target.value);
 
@@ -29,7 +30,7 @@ const SearchForm = ({
   return (
     <form
       className={styles.trainersSearch}
-      onSubmit={e => e.preventDefault()}
+      onSubmit={handleSubmit}
     >
       <label htmlFor="trainersInput" className={styles.searchLabel}>
         <span className={styles.labelHeading}>Trainer name</span>
@@ -73,6 +74,7 @@ const SearchForm = ({
           />
         </label>
       </div>
+      <button type="submit">filter</button>
     </form>
   );
 };
@@ -86,6 +88,7 @@ SearchForm.propTypes = {
   setIntermediateTrainerFilter: PropTypes.func.isRequired,
   amateurTrainerFilter: PropTypes.bool.isRequired,
   setAmateurTrainerFilter: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
 };
 
 export default SearchForm;

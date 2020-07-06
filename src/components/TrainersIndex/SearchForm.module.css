@@ -19,6 +19,23 @@
   margin-right: auto;
 }
 
+.trainersSearch button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  height: 65px;
+  border: none;
+  background-color: #0398fc;
+  color: #fcfcfc;
+  padding: 15px;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-radius: 8px;
+  text-transform: uppercase;
+}
+
 .expertiseBox {
   padding-bottom: 15px;
   width: 80%;

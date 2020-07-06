@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './FilterModal.module.css';
 import SearchForm from './SearchForm';
@@ -15,13 +15,38 @@ const FilterModal = ({
   setExpertTrainerFilter,
   resetCallback,
 }) => {
+  const [previousTrainerNameFilter, setPreviousTrainerNameFilter] = useState(trainerNameFilter);
+  const [previousExpertTrainerFilter, setPreviousExpertTrainerFilter] = useState(expertTrainerFilter);
+  const [previousIntermediateTrainerFilter, setPreviousIntermediateTrainerFilter] = useState(intermediateTrainerFilter);
+  const [previousAmateurTrainerFilter, setPreviousAmateurTrainerFilter] = useState(amateurTrainerFilter);
+
+  const resetFilters = () => {
+    setTrainerNameFilter(previousTrainerNameFilter);
+    setExpertTrainerFilter(previousExpertTrainerFilter);
+    setIntermediateTrainerFilter(previousIntermediateTrainerFilter);
+    setAmateurTrainerFilter(previousAmateurTrainerFilter);
+  };
+
+  const equalizeFilters = () => {
+    setPreviousTrainerNameFilter(trainerNameFilter);
+    setPreviousExpertTrainerFilter(expertTrainerFilter);
+    setPreviousIntermediateTrainerFilter(intermediateTrainerFilter);
+    setPreviousAmateurTrainerFilter(amateurTrainerFilter);
+  };
+
   const closeHandleClick = () => {
+    resetFilters();
+    setDisplaying(false);
+  };
+
+  const handleSubmit = () => {
+    equalizeFilters();
     resetCallback();
     setDisplaying(false);
   };
 
   return (
-    <>
+    <fragment>
       <div className={styles.dimmer} />
       <div className={styles.filterModal}>
         <button
@@ -40,9 +65,10 @@ const FilterModal = ({
           expertTrainerFilter={expertTrainerFilter}
           setTrainerNameFilter={setTrainerNameFilter}
           setExpertTrainerFilter={setExpertTrainerFilter}
+          handleSubmit={handleSubmit}
         />
       </div>
-    </>
+    </fragment>
   );
 };
 

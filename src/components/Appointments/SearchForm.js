@@ -17,7 +17,7 @@ const SearchForm = ({
 }) => (
   <form
     className={styles.trainersSearch}
-    onSubmit={e => e.preventDefault()}
+    onSubmit={handleSubmit}
   >
     <label htmlFor="trainersInput" className={styles.searchLabel}>
       <span className={styles.labelHeading}>Trainer name</span>
@@ -61,7 +61,7 @@ const SearchForm = ({
         />
       </label>
     </div>
-    <button type="button" onClick={handleSubmit}>filter</button>
+    <button type="submit">filter</button>
   </form>
 );
 
