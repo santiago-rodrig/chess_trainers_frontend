@@ -1,4 +1,4 @@
-import React, { fragment, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './FilterModal.module.css';
 import SearchForm from './SearchForm';
@@ -72,7 +72,7 @@ const FilterModal = ({
   };
 
   return (
-    <fragment>
+    <>
       <div className={styles.dimmer} />
       <div className={styles.filterModal}>
         <button
@@ -92,7 +92,7 @@ const FilterModal = ({
           handleSubmit={handleSubmit}
         />
       </div>
-    </fragment>
+    </>
   );
 };
 
