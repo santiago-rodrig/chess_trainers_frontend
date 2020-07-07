@@ -73,3 +73,7 @@ input:focus {
   color: #333;
   outline-color: #0398fc;
 }
+
+button:hover {
+  opacity: 0.6;
+}
