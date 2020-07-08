@@ -1,0 +1,90 @@
+.labelText {
+  font-family: 'Robot Slab', serif;
+  color: #333;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.inputLabel {
+  display: block;
+  flex-basis: 100%;
+}
+
+.inputLabel input {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  margin-bottom: 19px;
+  padding: 5px;
+  border-radius: 4px;
+  border-color: #bfbfbf;
+  border-style: solid;
+}
+
+.dataForm {
+  display: flex;
+  border: 1px solid #e8e8e8;
+  padding: 20px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+@media only screen and (min-width: 1024px) {
+  .inputLabel {
+    flex-basis: 45%;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  width: 86%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.submitButton {
+  background-color: #0398fc;
+  font-family: 'Roboto Slab', serif;
+  font-size: 24px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fcfcfc;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  padding: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  min-width: 100px;
+  height: 65px;
+}
+
+.submitButton:disabled {
+  opacity: 0.25;
+}
+
+.passwordsError {
+  background-color: #ff2617;
+  color: #fcfcfc;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-bottom: 25px;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+.passwordsError p {
+  font-size: 18px;
+}

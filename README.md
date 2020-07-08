@@ -1,5 +1,9 @@
 # Chess Trainers Frontend
 
+[live version](https://srodrig-chess-trainers-front.herokuapp.com/)
+
+![app demo gif](./doc/demo.gif)
+
 This is the frontend of a chess trainers appointments app,
 there are trainers and clients and each client schedules
 an appointment with a chess trainer.

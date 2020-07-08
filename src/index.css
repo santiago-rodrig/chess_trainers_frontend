@@ -16,6 +16,7 @@ ul {
 }
 
 body {
+  padding-top: 150px;
   padding-bottom: 150px;
   background-color: #fcfcfc;
   font-family: 'Lora', serif;
@@ -33,4 +34,46 @@ a {
 
 img {
   max-width: 100%;
+}
+
+strong {
+  font-weight: 700;
+  font-family: 'Roboto Slab', serif;
+}
+
+/* alertifyjs */
+
+.ajs-warning {
+  background-color: #fffc52 !important;
+  font-family: 'Robot Slab', serif !important;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.ajs-error {
+  background-color: #ff2617 !important;
+  font-family: 'Robot Slab', serif !important;
+  font-weight: 700;
+  font-size: 20px;
+  color: #fcfcfc;
+  letter-spacing: 1px;
+}
+
+.ajs-success {
+  background-color: #37f50c !important;
+  font-family: 'Robot Slab', serif !important;
+  font-weight: 700;
+  font-size: 20px;
+  color: #333;
+  letter-spacing: 1px;
+}
+
+input:focus {
+  color: #333;
+  outline-color: #0398fc;
+}
+
+button:hover {
+  opacity: 0.6;
 }

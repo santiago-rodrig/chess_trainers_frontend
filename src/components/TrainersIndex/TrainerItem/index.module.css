@@ -18,11 +18,14 @@
   font-family: 'Roboto Slab', serif;
   letter-spacing: 1px;
   padding: 20px;
-  border-style: outset;
 }
 
 .contactButton:focus {
   outline: none;
   opacity: 1;
   border-style: inset;
+}
+
+.trainerItem-appear {
+  opacity: 0;
 }
