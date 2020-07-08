@@ -1,0 +1,31 @@
+.divisoryLine {
+  width: 400px;
+  border-color: #e8e8e8;
+}
+
+.contactButton {
+  margin-top: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  border-radius: 8px;
+  background-color: #0398fc;
+  font-weight: bold;
+  color: white;
+  font-family: 'Roboto Slab', serif;
+  letter-spacing: 1px;
+  padding: 20px;
+}
+
+.contactButton:focus {
+  outline: none;
+  opacity: 1;
+  border-style: inset;
+}
+
+.trainerItem-appear {
+  opacity: 0;
+}

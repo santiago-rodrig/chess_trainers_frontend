@@ -1,0 +1,18 @@
+.navItem {
+  width: 200px;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.navItem a {
+  font-weight: 700;
+  font-size: 22px;
+  text-transform: capitalize;
+  font-family: 'Roboto Slab', serif;
+  color: #333;
+}
+
+.navItem-active {
+  background-color: #fcfcfc;
+}

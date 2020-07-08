@@ -1,0 +1,13 @@
+@keyframes opacityAnimation {
+  50% {
+    color: #333;
+  }
+
+  100% {
+    color: #e8e8e8;
+  }
+}
+
+.sliderAnimated {
+  animation: opacityAnimation 0.5s ease;
+}
